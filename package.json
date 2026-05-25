@@ -1,0 +1,22 @@
+{
+  "name": "codigo-do-score",
+  "version": "1.0.0",
+  "description": "Página de vendas premium e interativa do Código do Score",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "landing-page",
+    "score",
+    "fintech",
+    "financeiro"
+  ],
+  "author": "Código do Score",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^4.4.5"
+  }
+}

@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Código do Score — Aumente seu Score em 30 dias, mesmo negativado</title>
+
+  <!-- Google Fonts: Lora for editorial authority serif, Plus Jakarta Sans for clean high-tech fintech feel -->
+  <link rel="preconnect" href="/https://fonts.googleapis.com">
+  <link rel="preconnect" href="/https://fonts.gstatic.com" crossorigin>
+  <link
+    href="/https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Local Stylesheets -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+  <!-- DYNAMIC STICKY BAR -->
+  <div class="sticky-bar" id="sticky-bar">
+    <div class="sticky-container">
+      <a href="/https://pay.kiwify.com.br/7e3LcJe" class="sticky-link" id="sticky-checkout-link">
+        <span class="sticky-icon">🔓</span>
+        <span class="sticky-text">Quero o Código do Score — <strong class="checkout-price-display">R$ 47</strong></span>
+        <span class="sticky-badge">Acesso imediato garantido</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- TOP PROMO ANNOUNCEMENT BAR -->
+  <div class="top-announcement">
+    <div class="announcement-content">
+      <span class="pulse-dot-red"></span>
+      ⏳ Oferta especial ativa — <strong class="announcement-price-display">R$ 47</strong> <span class="old-price">no
+        lugar de R$ 97</span> · Acesso liberado na hora · Garantia de 7 dias
+    </div>
+  </div>
+
+  <main>
+    <!-- ═══════════ HERO SECTION ═══════════ -->
+    <section class="hero-section">
+      <div class="hero-glow-effect"></div>
+      <div class="container hero-inner">
+
+        <!-- Trust Eyebrow Badge -->
+        <div class="hero-eyebrow">
+          <span class="pulse-dot-green"></span>
+          Método prático e objetivo para reorganização de crédito
+        </div>
+
+        <h1 class="hero-title lora">
+          Seu score pode subir
+          <span class="title-highlight">em 30 dias</span>
+          <span class="break-desktop">mesmo com nome sujo</span>
+        </h1>
+
+        <p class="hero-lead">
+          Eu sei como é frustrante ter crédito negado, pagar juros absurdos e sentir que o sistema financeiro trabalha
+          contra você. O <strong>Código do Score</strong> foi estruturado para mudar essa realidade com um passo a passo
+          simples, direto e 100% honesto.
+        </p>
+
+        <!-- INTERACTIVE SCORE SIMULATOR (DIFERENCIAL WOW) -->
+        <div class="simulator-card glass-panel">
+          <div class="simulator-header">
+            <h3 class="lora">Simulador de Evolução de Score</h3>
+            <p>Arraste o cursor abaixo para ver o impacto projetado do método</p>
+          </div>
+
+          <div class="simulator-visual">
+            <!-- Dynamic Radial Gauge -->
+            <div class="gauge-container">
+              <svg class="radial-gauge" viewBox="0 0 120 120">
+                <circle class="gauge-bg" cx="60" cy="60" r="50"></circle>
+                <circle class="gauge-fill" id="gauge-fill" cx="60" cy="60" r="50"
+                  style="stroke-dasharray: 314; stroke-dashoffset: 314;"></circle>
+              </svg>
+              <div class="gauge-info">
+                <span class="gauge-label">Score Atual</span>
+                <span class="gauge-value" id="current-score-val">300</span>
+                <span class="gauge-status badge-red" id="score-status">CRÍTICO</span>
+              </div>
+            </div>
+
+            <!-- Dynamic Projection Arrow -->
+            <div class="projection-arrow">
+              <div class="arrow-icon">➔</div>
+              <div class="projection-label">Aumento projetado</div>
+              <div class="projection-value" id="projection-val">+250 a +350 pts</div>
+            </div>
+
+            <!-- Dynamic Projected Score -->
+            <div class="projected-container">
+              <div class="projected-circle">
+                <span class="projected-label">Após o Método</span>
+                <span class="projected-value" id="projected-score-val">580</span>
+                <span class="projected-status-badge badge-green" id="projected-status">RECOMENDADO</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slider Control -->
+          <div class="slider-control-wrapper">
+            <div class="slider-labels">
+              <span>0</span>
+              <span class="slider-current-badge">Arraste para ajustar seu score atual</span>
+              <span>1000</span>
+            </div>
+            <input type="range" min="0" max="1000" value="300" class="score-range-slider" id="score-slider">
+          </div>
+
+          <!-- Dynamic Benefits Checklist -->
+          <div class="simulator-benefits">
+            <h4 class="benefits-title">Facilidades com o Score Projetado:</h4>
+            <ul class="benefits-list" id="benefits-list">
+              <!-- Dynamically populated via JS -->
+            </ul>
+          </div>
+        </div>
+
+        <!-- HERO CTA -->
+        <div class="hero-cta-container">
+          <div class="price-box">
+            <span class="price-de">De R$ 97,00</span>
+            <span class="price-por lora">R$ <span class="main-price-val">47</span></span>
+            <span class="price-tag">52% OFF</span>
+          </div>
+
+          <a href="/https://pay.kiwify.com.br/7e3LcJe" class="btn-principal checkout-btn-url">
+            <span class="btn-shine"></span>
+            🔓 Quero meu acesso agora
+          </a>
+
+          <div class="trust-micro-copy">
+            <span>🔒 Pagamento 100% seguro</span>
+            <span>⚡ Acesso imediato via e-mail</span>
+            <span>🛡️ Garantia de 7 dias inclusa</span>
+          </div>
+        </div>
+
+        <!-- Features Badges Grid -->
+        <div class="features-badges">
+          <div class="feature-badge-card glass-panel">
+            <div class="fb-icon">📖</div>
+            <div class="fb-num lora">5</div>
+            <div class="fb-sub">Módulos em PDF</div>
+          </div>
+          <div class="feature-badge-card glass-panel">
+            <div class="fb-icon">🎁</div>
+            <div class="fb-num lora">5</div>
+            <div class="fb-sub">Bônus exclusivos</div>
+          </div>
+          <div class="feature-badge-card glass-panel">
+            <div class="fb-icon">📱</div>
+            <div class="fb-num lora">∞</div>
+            <div class="fb-sub">Acesso vitalício</div>
+          </div>
+          <div class="feature-badge-card glass-panel">
+            <div class="fb-icon">📅</div>
+            <div class="fb-num lora">30</div>
+            <div class="fb-sub">Dias de cronograma</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════ PAIN SECTION ═══════════ -->
+    <section class="pain-section">
+      <div class="container reveal">
+        <span class="section-tag tag-red">Você já passou por isso?</span>
+
+        <h2 class="section-title lora">Score baixo é mais do que um número.<br>É <em>uma barreira invisível.</em></h2>
+
+        <p class="section-subtitle">
+          A cada "crédito negado" cresce a frustração de não entender o motivo. O sistema de análise de crédito muitas
+          vezes parece complexo de propósito para manter as pessoas no escuro.
+        </p>
+
+        <div class="pain-list">
+          <div class="pain-item glass-panel">
+            <div class="pain-icon-wrapper">🏦</div>
+            <div class="pain-content">
+              <h3>Financiamento negado sem explicação</h3>
+              <p>Mesmo com renda estável para pagar as parcelas, você recebe uma recusa automática do banco e ninguém
+                explica o real motivo por trás disso.</p>
+            </div>
+          </div>
+
+          <div class="pain-item glass-panel">
+            <div class="pain-icon-wrapper">💳</div>
+            <div class="pain-content">
+              <h3>Cartões de crédito com limites baixos ou recusados</h3>
+              <p>A dificuldade de conseguir aprovação para um simples cartão de crédito com limite razoável impede
+                planos cotidianos e conquistas pessoais.</p>
+            </div>
+          </div>
+
+          <div class="pain-item glass-panel">
+            <div class="pain-icon-wrapper">📊</div>
+            <div class="pain-content">
+              <h3>Juros abusivos em empréstimos</h3>
+              <p>Por ter o score considerado baixo, as poucas instituições que aprovam cobram taxas de juros altíssimas,
+                tornando a dívida uma bola de neve injusta.</p>
+            </div>
+          </div>
+
+          <div class="pain-item glass-panel">
+            <div class="pain-icon-wrapper">😔</div>
+            <div class="pain-content">
+              <h3>Quedas misteriosas no score</h3>
+              <p>Você tenta manter as contas em dia, mas por consultas frequentes ou pequenos detalhes operacionais, sua
+                pontuação cai inexplicavelmente.</p>
+            </div>
+          </div>
+
+          <div class="pain-item glass-panel">
+            <div class="pain-icon-wrapper">🔁</div>
+            <div class="pain-content">
+              <h3>O ciclo de crédito bloqueado</h3>
+              <p>Sem acesso a crédito, você não constrói histórico positivo. Sem histórico positivo, o sistema mantém
+                seu score baixo. Uma armadilha que precisa ser quebrada.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pivot-quote-box glass-panel">
+          <p class="lora">
+            "A boa notícia é que o cálculo de crédito segue uma lógica muito específica.
+            Quando você compreende esses critérios,
+            <strong>pode agir exatamente nos pontos que a análise valoriza — e a pontuação começa a responder.</strong>
+            Foi esse aprendizado que estruturou o método que você terá acesso hoje."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ AUTHOR SECTION ═══════════ -->
+    <section class="author-section">
+      <div class="container reveal">
+        <div class="author-layout glass-panel">
+          <div class="author-media">
+            <!-- Elegant vector profile illustration as premium default, easy to replace with picture -->
+            <div class="author-avatar-wrapper">
+              <img src="./assets/elder-torres.jpeg" alt="Elder Torres" class="author-avatar-img"
+                onerror="this.style.display='none'; document.getElementById('author-fallback-svg').style.display='block';">
+              <svg id="author-fallback-svg" class="author-avatar-svg" viewBox="0 0 100 100" style="display: none;">
+                <defs>
+                  <linearGradient id="avatar-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#163554" />
+                    <stop offset="100%" stop-color="#1A6FA8" />
+                  </linearGradient>
+                </defs>
+                <circle cx="50" cy="50" r="48" fill="url(#avatar-grad)" stroke="#FFFFFF" stroke-width="2" />
+                <path d="M50 25 C38 25 38 45 50 45 C62 45 62 25 50 25 Z" fill="#E5E7EB" />
+                <path d="M18 78 C18 60 32 55 50 55 C68 55 82 60 82 78 Z" fill="#E5E7EB" />
+              </svg>
+            </div>
+          </div>
+          <div class="author-info">
+            <span class="author-label">DESENVOLVEDOR DO PROGRAMA</span>
+            <h2 class="author-name lora">Elder Torres</h2>
+            <span class="author-role">Especialista em Estratégias de Recuperação de Score</span>
+            <p class="author-bio">
+              Durante muito tempo, achei que score era apenas “ter sorte” com banco. Mas depois de enfrentar recusas e
+              limitações no dia a dia, comecei a pesquisar profundamente como o mercado de crédito funciona. Testei
+              estratégias, corrigi hábitos financeiros e percebi que pequenas mudanças fazem muita diferença. Foi assim
+              que nasceu este método: um conteúdo criado para ajudar outras pessoas a melhorar o score de forma
+              realista, prática e acessível.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ METHOD MECHANISMS SECTION ═══════════ -->
+    <section class="mechanism-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag tag-blue">Como funciona</span>
+          <h2 class="section-title lora">Ação estratégica dividida<br>em uma <em>sequência correta.</em></h2>
+          <p class="section-subtitle">
+            Não adianta pagar contas aleatoriamente ou seguir receitas milagrosas da internet. O método propõe uma
+            sequência lógica para gerar impactos reais na sua análise de score.
+          </p>
+        </div>
+
+        <div class="timeline-steps">
+          <div class="timeline-step-item reveal">
+            <div class="step-badge lora">1</div>
+            <div class="step-body glass-panel">
+              <h3>Entendimento das Regras Ocultas</h3>
+              <p>Você compreenderá os fatores reais que determinam seu perfil de crédito. <strong>Saber exatamente o que
+                  os algoritmos de análise procuram é o primeiro passo para agir com precisão.</strong></p>
+            </div>
+          </div>
+
+          <div class="timeline-step-item reveal">
+            <div class="step-badge lora">2</div>
+            <div class="step-body glass-panel">
+              <h3>Diagnóstico e Identificação de Gargalos</h3>
+              <p>Um guia prático para ler seu histórico financeiro, encontrar pontuações indevidas, atualizar cadastros
+                e <strong>eliminar de imediato os fatores ocultos que estão puxando sua pontuação para baixo.</strong>
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-step-item reveal">
+            <div class="step-badge lora">3</div>
+            <div class="step-body glass-panel">
+              <h3>Execução do Cronograma de 30 Dias</h3>
+              <p>Um plano de ação detalhado semana a semana. <strong>Ações práticas e pontuais para organizar seus
+                  hábitos e registrar informações positivas nos bancos de dados de forma estratégica.</strong></p>
+            </div>
+          </div>
+
+          <div class="timeline-step-item reveal">
+            <div class="step-badge lora">4</div>
+            <div class="step-body glass-panel">
+              <h3>Manutenção e Consolidação de Crédito</h3>
+              <p>Como usufruir da nova pontuação de forma inteligente, aprendendo a buscar as melhores linhas de
+                financiamento, cartões com limite adequado e <strong>proteger o score alto permanentemente.</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ MODULES SECTION ═══════════ -->
+    <section class="modules-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag tag-gold">Conteúdo do Método</span>
+          <h2 class="section-title lora">5 módulos focados,<br>sem enrolação e <em>completos.</em></h2>
+          <p class="section-subtitle">
+            Um material direto ao ponto, estruturado didaticamente em formato digital (PDF) para você aplicar
+            imediatamente.
+          </p>
+        </div>
+
+        <div class="modules-grid">
+
+          <div class="module-card glass-panel reveal">
+            <div class="module-card-header">
+              <span class="module-badge">MÓDULO 1</span>
+              <h3 class="module-title lora">Os Pilares Reais do Score</h3>
+            </div>
+            <p class="module-desc">Como funciona o cálculo nos bastidores. Conheça as métricas internas dos birôs e tire
+              de uma vez por todas as dúvidas sobre as lendas urbanas do crédito.</p>
+            <div class="module-tags">
+              <span class="m-tag">Fatores de Pesagem</span>
+              <span class="m-tag">SPC vs Boa Vista vs Serasa</span>
+              <span class="m-tag">Desmistificando Regras</span>
+            </div>
+          </div>
+
+          <div class="module-card glass-panel reveal">
+            <div class="module-card-header">
+              <span class="module-badge">MÓDULO 2</span>
+              <h3 class="module-title lora">O Diagnóstico do Relatório</h3>
+            </div>
+            <p class="module-desc">Aprenda a fazer um raio-x gratuito no seu histórico. Identifique restrições ocultas,
+              pontuações de consulta indevidas e limpe dados antigos que bloqueiam o score.</p>
+            <div class="module-tags">
+              <span class="m-tag">Auditoria Financeira</span>
+              <span class="m-tag">Dados Desatualizados</span>
+              <span class="m-tag">Cadastro Positivo Ativo</span>
+            </div>
+          </div>
+
+          <div class="module-card glass-panel reveal">
+            <div class="module-card-header">
+              <span class="module-badge">MÓDULO 3</span>
+              <h3 class="module-title lora">O Cronograma Prático de 30 Dias</h3>
+            </div>
+            <p class="module-desc">A estrutura principal do programa. Um cronograma semana a semana de pequenos ajustes
+              diários para sinalizar segurança de pagamento aos bancos.</p>
+            <div class="module-tags">
+              <span class="m-tag">Checklist Semanal</span>
+              <span class="m-tag">Geração de Histórico</span>
+              <span class="m-tag">Ações de Alto Impacto</span>
+            </div>
+          </div>
+
+          <div class="module-card glass-panel reveal">
+            <div class="module-card-header">
+              <span class="module-badge">MÓDULO 4</span>
+              <h3 class="module-title lora">Guia Prático para Negociações</h3>
+            </div>
+            <p class="module-desc">Estratégias para lidar com restrições e pendências. Como negociar valores com o
+              máximo de desconto, entender a prescrição de dívidas e limpar seu nome.</p>
+            <div class="module-tags">
+              <span class="m-tag">Negociações Eficientes</span>
+              <span class="m-tag">Descontos Reais</span>
+              <span class="m-tag">Estratégia de Acordo</span>
+            </div>
+          </div>
+
+          <div class="module-card glass-panel reveal">
+            <div class="module-card-header">
+              <span class="module-badge">MÓDULO 5</span>
+              <h3 class="module-title lora">Alcançando e Mantendo o Score Alto</h3>
+            </div>
+            <p class="module-desc">O que fazer com o crédito restabelecido. Dicas inteligentes para solicitar limites,
+              financiar bens sob as melhores taxas do mercado e blindar seu score.</p>
+            <div class="module-tags">
+              <span class="m-tag">Financiamento Inteligente</span>
+              <span class="m-tag">Aumento de Limites</span>
+              <span class="m-tag">Segurança a Longo Prazo</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ BONUSES SECTION ═══════════ -->
+    <section class="bonus-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag tag-green">Pacote de Bônus Gratuitos</span>
+          <h2 class="section-title lora">5 Guias Complementares<br>inclusos <em>sem custo adicional.</em></h2>
+          <p class="section-subtitle">
+            Além do método completo, você receberá materiais bônus desenvolvidos para acelerar sua estabilidade
+            financeira.
+          </p>
+        </div>
+
+        <div class="bonuses-list">
+
+          <div class="bonus-card-item glass-panel reveal">
+            <div class="bonus-tag-circle">B1</div>
+            <div class="bonus-details">
+              <h4 class="lora">⚖️ Guia dos Direitos do Consumidor de Crédito</h4>
+              <p>Instruções fundamentadas para contestar dados incorretos ou restrições indevidas nos órgãos de proteção
+                de forma legal e simples, sem necessidade de intermediários.</p>
+              <span class="bonus-value-tag">Valor Individual: R$ 19 — <strong class="text-green">Grátis
+                  hoje</strong></span>
+            </div>
+          </div>
+
+          <div class="bonus-card-item glass-panel reveal">
+            <div class="bonus-tag-circle">B2</div>
+            <div class="bonus-details">
+              <h4 class="lora">💳 Os 10 Cartões Mais Acessíveis do Mercado (2026)</h4>
+              <p>Um levantamento prático e atualizado com as opções de cartões de crédito que oferecem maior taxa de
+                aprovação para perfis em fase de reconstrução financeira.</p>
+              <span class="bonus-value-tag">Valor Individual: R$ 17 — <strong class="text-green">Grátis
+                  hoje</strong></span>
+            </div>
+          </div>
+
+          <div class="bonus-card-item glass-panel reveal">
+            <div class="bonus-tag-circle">B3</div>
+            <div class="bonus-details">
+              <h4 class="lora">📈 Como Solicitar Limites de Forma Estratégica</h4>
+              <p>O passo a passo correto para gerenciar o uso dos seus limites atuais de forma que os bancos compreendam
+                sua capacidade de pagamento e ampliem seus limites.</p>
+              <span class="bonus-value-tag">Valor Individual: R$ 27 — <strong class="text-green">Grátis
+                  hoje</strong></span>
+            </div>
+          </div>
+
+          <div class="bonus-card-item glass-panel reveal">
+            <div class="bonus-tag-circle">B4</div>
+            <div class="bonus-details">
+              <h4 class="lora">✈️ Guia de Pontos e Benefícios de Cartão</h4>
+              <p>Aprenda o básico sobre como os gastos diários podem se transformar em vantagens práticas de fidelidade,
+                milhas aéreas e cashback simples de resgatar.</p>
+              <span class="bonus-value-tag">Valor Individual: R$ 27 — <strong class="text-green">Grátis
+                  hoje</strong></span>
+            </div>
+          </div>
+
+          <div class="bonus-card-item glass-panel reveal">
+            <div class="bonus-tag-circle">B5</div>
+            <div class="bonus-details">
+              <h4 class="lora">📊 Planilha de Controle Financeiro de Bolso</h4>
+              <p>Uma ferramenta simples e intuitiva de orçamento e acompanhamento da evolução mensal do seu score para
+                consolidar sua nova fase financeira.</p>
+              <span class="bonus-value-tag">Valor Individual: R$ 47 — <strong class="text-green">Grátis
+                  hoje</strong></span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- INTERACTIVE ORDER BUMP BOX -->
+        <div class="order-bump-container reveal">
+          <div class="order-bump-box glass-panel" id="order-bump-card">
+            <div class="ob-checkbox-wrapper">
+              <input type="checkbox" id="ob-checkbox" class="ob-checkbox">
+              <label for="ob-checkbox" class="ob-checkbox-label">
+                <span class="ob-checkbox-custom"></span>
+              </label>
+            </div>
+
+            <div class="ob-content">
+              <span class="ob-eyebrow">🔥 ADICIONAR OFERTA ADICIONAL</span>
+              <h4 class="lora ob-title">Kit Score Blindado — Documentos Prontos para Usar</h4>
+              <p class="ob-desc">
+                Adicione modelos prontos de contestação fundamentados em leis de proteção ao consumidor, cartas para
+                exclusão de dívidas prescritas e scripts de negociação amigável por telefone. Basta preencher com seus
+                dados e enviar. Economize tempo e evite erros na hora de agir!
+              </p>
+            </div>
+
+            <div class="ob-pricing">
+              <span class="ob-old-price">R$ 47,00</span>
+              <span class="ob-new-price lora">R$ 17</span>
+              <span class="ob-single-fee">adicional único</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════ SOCIAL PROOF SECTION ═══════════ -->
+    <section class="social-proof-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag tag-green">Resultados Reais</span>
+          <h2 class="section-title lora">Histórias de quem aplicou<br>o <em>método na prática.</em></h2>
+          <p class="section-subtitle">
+            Relatos de pessoas que compreenderam as regras do jogo e mudaram sua situação.
+          </p>
+        </div>
+
+        <div class="testimonials-grid reveal">
+
+          <div class="testimonial-card glass-panel">
+            <div class="stars">★★★★★</div>
+            <p class="t-text lora">
+              "Eu estava com a pontuação estagnada em 280 e não conseguia aprovação de crédito em lugar nenhum. Segui o
+              roteiro passo a passo e, em poucas semanas, fazendo os cadastros e limpezas corretas, meu score respondeu
+              e subiu para 587. Um alívio."
+            </p>
+            <div class="t-footer">
+              <div class="t-avatar" style="background-color: #1A6FA8;">MR</div>
+              <div class="t-meta">
+                <span class="t-name">Marcos R.</span>
+                <span class="t-desc">Motorista Autônomo · SP</span>
+              </div>
+              <div class="t-score-evolution text-green">
+                <span class="se-before">280</span> ➔ <strong class="se-after">587</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card glass-panel">
+            <div class="stars">★★★★★</div>
+            <p class="t-text lora">
+              "O método de negociação me ajudou a entender o que pagar primeiro. Utilizei o roteiro sugerido de
+              conversação telefônica e consegui quitar uma pendência antiga que bloqueava meu nome com um excelente
+              desconto. Meu score foi para 641."
+            </p>
+            <div class="t-footer">
+              <div class="t-avatar" style="background-color: #0D7A3E;">RS</div>
+              <div class="t-meta">
+                <span class="t-name">Roberto S.</span>
+                <span class="t-desc">Vendedor Autônomo · RJ</span>
+              </div>
+              <div class="t-score-evolution text-green">
+                <span class="se-before">Restrito</span> ➔ <strong class="se-after">641</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card glass-panel">
+            <div class="stars">★★★★★</div>
+            <p class="t-text lora">
+              "Eu achava que score subia apenas pagando contas, mas descobri os erros no meu histórico que estavam
+              jogando minha pontuação para baixo. Atualizei tudo seguindo o guia e consegui subir de 410 para 720.
+              Consegui a aprovação que precisava."
+            </p>
+            <div class="t-footer">
+              <div class="t-avatar" style="background-color: #6B3FA0;">AC</div>
+              <div class="t-meta">
+                <span class="t-name">Ana C.</span>
+                <span class="t-desc">Administradora · MG</span>
+              </div>
+              <div class="t-score-evolution text-green">
+                <span class="se-before">410</span> ➔ <strong class="se-after">720</strong>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- NEW SOFT & CREDIBLE COPY STATS INSTEAD OF AGGRESSIVE CLAIMS -->
+        <div class="stats-container glass-panel reveal">
+          <div class="stat-item">
+            <span class="stat-title lora text-blue">Método Validado</span>
+            <p class="stat-desc">Desenvolvido estritamente com base nos critérios públicos e reais de análise de
+              crédito.</p>
+          </div>
+          <div class="stat-item">
+            <span class="stat-title lora text-green">Foco Prático</span>
+            <p class="stat-desc">Roteiro dividido em tarefas diárias para simplificar o seu acompanhamento e ações.</p>
+          </div>
+          <div class="stat-item">
+            <span class="stat-title lora text-gold">Garantia Total</span>
+            <p class="stat-desc">Sua satisfação ou seu investimento de volta de forma simples em até 7 dias.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════ GUARANTEE SECTION ═══════════ -->
+    <section class="guarantee-section">
+      <div class="container reveal">
+        <div class="guarantee-box glass-panel">
+          <div class="guarantee-shield">🛡️</div>
+          <h2 class="lora">Garantia de Confiança e Transparência</h2>
+          <p>
+            Nosso objetivo é entregar um conteúdo direto, acessível e útil para quem deseja melhorar o score de maneira
+            possível e estratégica. Ao entrar, você terá 7 dias de garantia para acessar o material e conhecer o método
+            com total segurança.
+          </p>
+
+          <div class="guarantee-badges">
+            <div class="gb-item"><span>🔒</span> Transação Segura</div>
+            <div class="gb-item"><span>⚡</span> Envio Automático</div>
+            <div class="gb-item"><span>♾️</span> Acesso Vitalício</div>
+            <div class="gb-item"><span>💰</span> Reembolso Garantido</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ FINAL CTA SECTION ═══════════ -->
+    <section class="final-cta-section" id="purchase-cta">
+      <div class="container reveal">
+        <div class="cta-card glass-panel">
+          <h2 class="lora">Dê o primeiro passo para<br>retomar seu <em>controle financeiro hoje.</em></h2>
+          <p class="cta-lead">
+            Chega de receber negativas sem justificativa e pagar juros elevados. Compreenda o funcionamento do sistema e
+            use-o a seu favor com um método sério, organizado e direto.
+          </p>
+
+          <div class="pricing-card">
+            <span class="p-old-price">De R$ 97,00 por apenas</span>
+            <span class="p-new-price lora">R$ <span class="main-price-val">47</span></span>
+            <span class="p-terms">Pagamento único · Sem mensalidades · Acesso vitalício</span>
+          </div>
+
+          <div class="included-bundle">
+            <h4 class="bundle-title">Tudo o que está incluso no seu acesso:</h4>
+            <ul class="bundle-list">
+              <li>Manual do Código do Score completo em PDF</li>
+              <li>Bônus 1 — Guia dos Direitos do Consumidor</li>
+              <li>Bônus 2 — Levantamento dos 10 Cartões Mais Acessíveis</li>
+              <li>Bônus 3 — Roteiro Prático de Solicitação de Limites</li>
+              <li>Bônus 4 — Introdução ao Uso Estratégico de Pontos</li>
+              <li>Bônus 5 — Planilha de Acompanhamento Financeiro</li>
+              <li class="bump-bundle-item" id="bump-bundle-item" style="display: none;">Adicional — Kit Documentos
+                Prontos (Score Blindado)</li>
+              <li>Garantia Incondicional de reembolso por 7 dias</li>
+            </ul>
+          </div>
+
+          <a href="/https://pay.kiwify.com.br/7e3LcJe" class="btn-principal checkout-btn-url btn-large">
+            <span class="btn-shine"></span>
+            🔓 Quero meu acesso imediato — <strong class="checkout-price-display">R$ 47</strong>
+          </a>
+
+          <div class="checkout-gateways">
+            <div class="gw-item"><span>🔒</span> Ambiente Seguro</div>
+            <div class="gw-item"><span>💳</span> Pix, Cartão ou Boleto</div>
+            <div class="gw-item"><span>⚡</span> Envio imediato</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ FAQ SECTION ═══════════ -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag tag-blue">Perguntas Frequentes</span>
+          <h2 class="section-title lora">Tire suas dúvidas</h2>
+          <p class="section-subtitle">Esclarecemos os principais pontos para você tomar sua decisão com segurança.</p>
+        </div>
+
+        <div class="faq-accordion">
+
+          <div class="faq-item-wrapper glass-panel reveal">
+            <button class="faq-trigger">
+              <span class="faq-q-text">O método funciona mesmo com o nome negativado?</span>
+              <span class="faq-icon-cross"></span>
+            </button>
+            <div class="faq-answer-panel">
+              <div class="faq-answer-inner">
+                <p>Sim. O Módulo 4 foi projetado exatamente com foco em reestruturação e acordos de dívidas. Você
+                  aprenderá como gerenciar pendências de forma inteligente, aproveitar descontos e organizar seu
+                  cadastro para emitir sinais positivos de comportamento financeiro mesmo enquanto resolve negociações.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item-wrapper glass-panel reveal">
+            <button class="faq-trigger">
+              <span class="faq-q-text">Em quanto tempo é possível perceber os primeiros resultados?</span>
+              <span class="faq-icon-cross"></span>
+            </button>
+            <div class="faq-answer-panel">
+              <div class="faq-answer-inner">
+                <p>Os primeiros reflexos de melhoria no histórico de crédito costumam ser processados pelos birôs de
+                  análise em um intervalo de 15 a 30 dias após os primeiros ajustes. Os prazos de resposta variam
+                  conforme a situação inicial do usuário (presença de negativações ativas, dados desatualizados, etc.),
+                  mas a execução correta acelera esse ciclo.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item-wrapper glass-panel reveal">
+            <button class="faq-trigger">
+              <span class="faq-q-text">É obrigatório quitar todas as pendências para ver a nota subir?</span>
+              <span class="faq-icon-cross"></span>
+            </button>
+            <div class="faq-answer-panel">
+              <div class="faq-answer-inner">
+                <p>Não obrigatoriamente. O guia ensina quais tipos de dívidas têm peso prioritário no seu score, quais
+                  pendências antigas podem ser analisadas de forma estratégica e como fechar acordos de parcelamento
+                  eficientes. Regularizar o cadastro e estruturar o Cadastro Positivo tem grande peso, mesmo que existam
+                  compromissos parcelados em andamento.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item-wrapper glass-panel reveal">
+            <button class="faq-trigger">
+              <span class="faq-icon-cross"></span>
+              <span class="faq-q-text">Como e quando recebo o material adquirido?</span>
+            </button>
+            <div class="faq-answer-panel">
+              <div class="faq-answer-inner">
+                <p>O envio é 100% automático. Assim que a transação for confirmada pelo checkout seguro, você receberá
+                  um e-mail com as instruções e link exclusivo de acesso para baixar o material principal em PDF, junto
+                  de todos os guias bônus e planilhas integradas. Para compras no PIX ou cartão, o envio ocorre em
+                  poucos minutos.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item-wrapper glass-panel reveal">
+            <button class="faq-trigger">
+              <span class="faq-q-text">Como funciona a garantia de satisfação?</span>
+              <span class="faq-icon-cross"></span>
+            </button>
+            <div class="faq-answer-panel">
+              <div class="faq-answer-inner">
+                <p>Oferecemos garantia de reembolso integral em até 7 dias corridos a partir da compra. Caso leia o
+                  material e julgue que as informações de reestruturação de crédito não agregam valor ao seu perfil,
+                  basta solicitar o reembolso na plataforma e devolveremos integralmente o valor investido.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item-wrapper glass-panel reveal">
+            <button class="faq-trigger">
+              <span class="faq-q-text">O meu acesso ao material possui prazo de validade?</span>
+              <span class="faq-icon-cross"></span>
+            </button>
+            <div class="faq-answer-panel">
+              <div class="faq-answer-inner">
+                <p>Não. A sua aquisição garante acesso vitalício. Você pode fazer o download dos arquivos em PDF e
+                  salvá-los no seu computador ou celular para ler no seu ritmo, além de ter direito às atualizações de
+                  informações que realizamos periodicamente na área do aluno.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer-section">
+    <div class="container">
+      <p class="copyright-text">
+        &copy; 2026 Código do Score · Todos os direitos reservados.
+      </p>
+      <p class="disclaimer-text">
+        Este site e o material disponível são estritamente educativos e informativos. Os resultados práticos de
+        pontuação e acesso ao crédito dependem da regularidade fiscal, capacidade de pagamento e análise individualizada
+        de cada instituição financeira, não configurando promessa de crédito garantido ou resultados fixos.
+      </p>
+      <div class="footer-links">
+        <a href="/#">Política de Privacidade</a>
+        <span class="sep">·</span>
+        <a href="/#">Termos de Uso</a>
+        <span class="sep">·</span>
+        <a href="/#">Suporte ao Aluno</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Local Script Execution -->
+  <script src="./js/app.js"></script>
+</body>
+
+</html>
