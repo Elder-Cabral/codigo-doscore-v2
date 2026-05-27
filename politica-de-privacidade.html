@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18188749977"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18188749977');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade — Código do Score</title>
+  <meta name="description" content="Política de Privacidade oficial do Código do Score. Entenda como coletamos, protegemos e utilizamos seus dados conforme a LGPD.">
+
+  <!-- Google Fonts: Lora for editorial authority serif, Plus Jakarta Sans for clean high-tech fintech feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Local Stylesheets -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <style>
+    :root {
+      /* Specific branding override to match user requests exactly */
+      --bg-dark-deep: #0a0a0a;
+      --accent-gold: #f0b429;
+      --accent-gold-glow: rgba(240, 180, 41, 0.12);
+      --text-white: #ffffff;
+    }
+
+    body {
+      background-color: var(--bg-dark-deep);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .privacy-layout {
+      flex: 1;
+      padding: 60px 0 100px;
+    }
+
+    .back-nav {
+      margin-bottom: 40px;
+    }
+
+    .btn-voltar {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 50px;
+      color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 600;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+    }
+
+    .btn-voltar:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      background: var(--accent-gold-glow);
+      transform: translateX(-4px);
+      box-shadow: 0 4px 20px rgba(240, 180, 41, 0.1);
+    }
+
+    .privacy-card {
+      padding: 56px;
+      border-radius: 24px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.01);
+    }
+
+    .privacy-header {
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 32px;
+      margin-bottom: 40px;
+    }
+
+    .privacy-title {
+      font-size: clamp(28px, 4.5vw, 42px);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .privacy-update {
+      font-size: 13.5px;
+      color: var(--accent-gold);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-gold-glow);
+      padding: 6px 14px;
+      border-radius: 30px;
+      border: 1px solid rgba(240, 180, 41, 0.25);
+    }
+
+    .privacy-content {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .policy-group {
+      scroll-margin-top: 40px;
+    }
+
+    .policy-group h2 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .policy-group h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(240, 180, 41, 0.25), transparent);
+      margin-left: 10px;
+    }
+
+    .policy-group p {
+      font-size: 15.5px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .policy-group p strong {
+      color: var(--text-white);
+    }
+
+    .policy-group ul {
+      list-style: none;
+      padding-left: 4px;
+      margin-bottom: 16px;
+    }
+
+    .policy-group ul li {
+      position: relative;
+      font-size: 15.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      padding-left: 24px;
+      margin-bottom: 12px;
+    }
+
+    .policy-group ul li::before {
+      content: '•';
+      color: var(--accent-gold);
+      font-size: 24px;
+      position: absolute;
+      left: 4px;
+      top: -2px;
+      line-height: 1;
+    }
+
+    .policy-group ul li strong {
+      color: var(--text-white);
+    }
+
+    .policy-group a {
+      color: var(--accent-gold);
+      font-weight: 500;
+      text-decoration: underline;
+      transition: var(--transition-smooth);
+    }
+
+    .policy-group a:hover {
+      color: var(--text-white);
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    }
+
+    .policy-box-alert {
+      background: rgba(240, 180, 41, 0.02);
+      border: 1px solid rgba(240, 180, 41, 0.1);
+      border-radius: 16px;
+      padding: 28px;
+      margin-top: 20px;
+    }
+
+    .policy-box-alert p {
+      margin-bottom: 12px;
+    }
+
+    .policy-box-alert p:last-child {
+      margin-bottom: 0;
+    }
+
+    .policy-box-alert a {
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .privacy-layout {
+        padding: 40px 0 80px;
+      }
+      .privacy-card {
+        padding: 32px 24px;
+        border-radius: 16px;
+      }
+      .btn-voltar {
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="privacy-layout">
+    <div class="container">
+      
+      <!-- Voltar ao Início -->
+      <nav class="back-nav">
+        <a href="/" class="btn-voltar" id="back-home-link">
+          <span>←</span> Voltar ao início
+        </a>
+      </nav>
+
+      <!-- Privacy Content Card -->
+      <article class="privacy-card glass-panel">
+        
+        <!-- Header -->
+        <header class="privacy-header">
+          <h1 class="privacy-title lora">Política de Privacidade</h1>
+          <div class="privacy-update">
+            Última atualização: junho de 2026
+          </div>
+        </header>
+
+        <!-- Body Content -->
+        <div class="privacy-content">
+
+          <!-- 1. QUEM SOMOS -->
+          <section class="policy-group" id="quem-somos">
+            <h2>1. QUEM SOMOS</h2>
+            <p><strong>Responsável:</strong> Elder Torres</p>
+            <p><strong>Produto:</strong> Código do Score — material educativo digital</p>
+            <p><strong>Contato:</strong> <a href="mailto:eldertorrees@gmail.com" id="contact-email-1">eldertorrees@gmail.com</a></p>
+            <p>Este site é operado por pessoa física/jurídica brasileira e está sujeito à Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).</p>
+          </section>
+
+          <!-- 2. QUAIS DADOS COLETAMOS -->
+          <section class="policy-group" id="dados-coletamos">
+            <h2>2. QUAIS DADOS COLETAMOS</h2>
+            <ul>
+              <li><strong>Nome e endereço de e-mail</strong> (fornecidos voluntariamente no momento da compra)</li>
+              <li><strong>Endereço de IP e dados de navegação</strong> (coletados automaticamente para segurança e análise de tráfego)</li>
+              <li><strong>Dados de pagamento</strong> (processados exclusivamente pela plataforma Kiwify — não armazenamos dados de cartão)</li>
+            </ul>
+          </section>
+
+          <!-- 3. PARA QUE USAMOS SEUS DADOS -->
+          <section class="policy-group" id="para-que-usamos">
+            <h2>3. PARA QUE USAMOS SEUS DADOS</h2>
+            <ul>
+              <li>Envio do material adquirido e comunicações relacionadas ao produto</li>
+              <li>Suporte ao cliente</li>
+              <li>Melhoria da experiência no site</li>
+              <li>Cumprimento de obrigações legais</li>
+            </ul>
+            <p>Não vendemos, alugamos ou compartilhamos seus dados com terceiros para fins comerciais.</p>
+          </section>
+
+          <!-- 4. COMPARTILHAMENTO DE DADOS -->
+          <section class="policy-group" id="compartilhamento-dados">
+            <h2>4. COMPARTILHAMENTO DE DADOS</h2>
+            <p>Seus dados podem ser compartilhados apenas com:</p>
+            <ul>
+              <li><strong>Kiwify</strong> (plataforma de pagamento e entrega do produto)</li>
+              <li><strong>Ferramentas de análise de tráfego</strong> (ex: Google Analytics), de forma anonimizada</li>
+            </ul>
+            <p>Todos os parceiros seguem políticas compatíveis com a LGPD.</p>
+          </section>
+
+          <!-- 5. COOKIES -->
+          <section class="policy-group" id="cookies">
+            <h2>5. COOKIES</h2>
+            <p>Este site utiliza cookies para funcionamento básico e análise de navegação. Você pode desativar cookies no seu navegador, mas algumas funcionalidades podem ser afetadas.</p>
+          </section>
+
+          <!-- 6. SEUS DIREITOS (LGPD) -->
+          <section class="policy-group" id="seus-direitos">
+            <h2>6. SEUS DIREITOS (LGPD)</h2>
+            <p>Você tem direito a:</p>
+            <ul>
+              <li>Confirmar a existência de tratamento dos seus dados</li>
+              <li>Acessar seus dados</li>
+              <li>Corrigir dados incompletos ou desatualizados</li>
+              <li>Solicitar a exclusão dos seus dados</li>
+              <li>Revogar o consentimento a qualquer momento</li>
+            </ul>
+            <div class="policy-box-alert">
+              <p>Para exercer esses direitos, entre em contato: <a href="mailto:eldertorrees@gmail.com" id="contact-email-2">eldertorrees@gmail.com</a></p>
+              <p>Respondemos em até <strong>15 dias úteis</strong>.</p>
+            </div>
+          </section>
+
+          <!-- 7. SEGURANÇA -->
+          <section class="policy-group" id="seguranca">
+            <h2>7. SEGURANÇA</h2>
+            <p>Adotamos medidas técnicas e administrativas para proteger seus dados contra acesso não autorizado, perda ou divulgação indevida.</p>
+          </section>
+
+          <!-- 8. ALTERAÇÕES NESTA POLÍTICA -->
+          <section class="policy-group" id="alteracoes-politica">
+            <h2>8. ALTERAÇÕES NESTA POLÍTICA</h2>
+            <p>Esta política pode ser atualizada periodicamente. A data da última atualização estará sempre indicada no topo desta página.</p>
+          </section>
+
+          <!-- 9. CONTATO -->
+          <section class="policy-group" id="contato">
+            <h2>9. CONTATO</h2>
+            <p>E-mail: <a href="mailto:eldertorrees@gmail.com" id="contact-email-3">eldertorrees@gmail.com</a></p>
+          </section>
+
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer-section">
+    <div class="container">
+      <p class="copyright-text">
+        &copy; 2026 Código do Score · Todos os direitos reservados.
+      </p>
+      <p class="disclaimer-text">
+        Este site e o material disponível são estritamente educativos e informativos. Os resultados práticos de
+        pontuação e acesso ao crédito dependem da regularidade fiscal, capacidade de pagamento e análise individualizada
+        de cada instituição financeira, não configurando promessa de crédito garantido ou resultados fixos.
+      </p>
+      <div class="footer-links">
+        <a href="politica-de-privacidade.html" id="footer-privacy-link">Política de Privacidade</a>
+        <span class="sep">·</span>
+        <a href="termos-de-uso.html" id="footer-terms-link">Termos de Uso</a>
+        <span class="sep">·</span>
+        <a href="contato.html" id="footer-support-link">Suporte ao Aluno</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

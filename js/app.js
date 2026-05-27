@@ -3,146 +3,14 @@
    ══════════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initScoreSimulator();
   initOrderBump();
   initFAQAccordion();
   initScrollReveal();
   initStickyBar();
 });
 
-/**
- * 📊 SIMULADOR DE SCORE INTERATIVO
- * Atualiza dinamicamente o arco visual do gauge, a projeção de pontuação,
- * o status de crédito e a lista de benefícios conforme o slider é arrastado.
- */
-function initScoreSimulator() {
-  const slider = document.getElementById('score-slider');
-  const currentScoreVal = document.getElementById('current-score-val');
-  const scoreStatus = document.getElementById('score-status');
-  const gaugeFill = document.getElementById('gauge-fill');
-  const projectionVal = document.getElementById('projection-val');
-  const projectedScoreVal = document.getElementById('projected-score-val');
-  const projectedStatus = document.getElementById('projected-status');
-  const benefitsList = document.getElementById('benefits-list');
 
-  if (!slider) return;
 
-  // Parâmetros do SVG Gauge
-  const maxDash = 314; // Perimeter of radius 50 circle (2 * PI * 50 = 314)
-
-  const updateSimulator = () => {
-    const score = parseInt(slider.value, 10);
-
-    // 1. Atualizar display de score atual
-    currentScoreVal.innerText = score;
-
-    // 2. Calcular projeções e faixas de aumento dinâmicas
-    let increaseMin, increaseMax, projectedScore, statusText, statusClass, gaugeColor;
-
-    if (score <= 400) {
-      increaseMin = 250;
-      increaseMax = 350;
-      projectedScore = score + 290;
-      statusText = 'CRÍTICO';
-      statusClass = 'badge-red';
-      gaugeColor = 'hsl(5, 78%, 57%)'; // Coral red
-    } else if (score <= 700) {
-      increaseMin = 180;
-      increaseMax = 240;
-      projectedScore = score + 210;
-      statusText = 'MODERADO';
-      statusClass = 'badge-orange';
-      gaugeColor = 'hsl(43, 93%, 53%)'; // Amber gold
-    } else if (score <= 900) {
-      increaseMin = 80;
-      increaseMax = 120;
-      projectedScore = score + 95;
-      statusText = 'BOM';
-      statusClass = 'badge-green';
-      gaugeColor = 'hsl(142, 69%, 45%)'; // Emerald green
-    } else {
-      increaseMin = 20;
-      increaseMax = 50;
-      projectedScore = Math.min(1000, score + 35);
-      statusText = 'EXCELENTE';
-      statusClass = 'badge-green';
-      gaugeColor = 'hsl(142, 69%, 45%)'; // Emerald green
-    }
-
-    // 3. Atualizar elementos visuais
-    projectionVal.innerText = `+${increaseMin} a +${increaseMax} pts`;
-    projectedScoreVal.innerText = projectedScore;
-
-    // Status badges
-    scoreStatus.innerText = statusText;
-    scoreStatus.className = `gauge-status ${statusClass}`;
-
-    let projectedStatusText = 'MÉDIO RISCO';
-    let projectedStatusClass = 'badge-orange';
-    if (projectedScore >= 700) {
-      projectedStatusText = 'RECOMENDADO';
-      projectedStatusClass = 'badge-green';
-    } else if (projectedScore < 500) {
-      projectedStatusText = 'ALTO RISCO';
-      projectedStatusClass = 'badge-red';
-    }
-    projectedStatus.innerText = projectedStatusText;
-    projectedStatus.className = `projected-status-badge ${projectedStatusClass}`;
-
-    // 4. Animar o Gauge fill (radial SVG)
-    const fillPercent = score / 1000;
-    const offset = maxDash - (fillPercent * maxDash);
-    gaugeFill.style.strokeDashoffset = offset;
-    gaugeFill.style.stroke = gaugeColor;
-
-    // 5. Atualizar benefícios dinâmicos baseados no Score Projetado
-    updateBenefits(projectedScore);
-  };
-
-  const updateBenefits = (projectedScore) => {
-    // Definir limites de desbloqueio para os benefícios
-    const benefitsData = [
-      {
-        text: 'Aprovação de Cartões de Crédito Convencionais',
-        minScore: 500,
-        errText: 'Restrição de limite inicial e alto risco'
-      },
-      {
-        text: 'Financiamento de Carros e Motos com juros baixos',
-        minScore: 650,
-        errText: 'Juros abusivos ou recusa imediata'
-      },
-      {
-        text: 'Aprovação Facilitada para Financiamento Imobiliário',
-        minScore: 750,
-        errText: 'Garantias rígidas e entrada acima de 40%'
-      },
-      {
-        text: 'Empréstimos pessoais e comerciais com taxas reduzidas',
-        minScore: 820,
-        errText: 'Taxas punitivas de score de risco'
-      }
-    ];
-
-    benefitsList.innerHTML = '';
-
-    benefitsData.forEach(item => {
-      const li = document.createElement('li');
-      if (projectedScore >= item.minScore) {
-        li.innerText = item.text;
-      } else {
-        li.className = 'disabled';
-        li.innerText = `${item.text} (${item.errText})`;
-      }
-      benefitsList.appendChild(li);
-    });
-  };
-
-  // Event Listeners para o slider
-  slider.addEventListener('input', updateSimulator);
-  // Inicialização no primeiro carregamento
-  updateSimulator();
-}
 
 /**
  * 🛒 LÓGICA DO ORDER BUMP DINÂMICO

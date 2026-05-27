@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18188749977"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18188749977');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suporte ao Aluno — Código do Score</title>
+  <meta name="description" content="Central de Suporte ao Aluno do Código do Score. Encontre canais de atendimento, tire dúvidas de acesso e solicite reembolsos de forma simples.">
+
+  <!-- Google Fonts: Lora for editorial authority serif, Plus Jakarta Sans for clean high-tech fintech feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Local Stylesheets -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <style>
+    :root {
+      /* Specific branding override to match user requests exactly */
+      --bg-dark-deep: #0a0a0a;
+      --accent-gold: #f0b429;
+      --accent-gold-glow: rgba(240, 180, 41, 0.12);
+      --text-white: #ffffff;
+    }
+
+    body {
+      background-color: var(--bg-dark-deep);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .support-layout {
+      flex: 1;
+      padding: 60px 0 100px;
+    }
+
+    .back-nav {
+      margin-bottom: 40px;
+    }
+
+    .btn-voltar {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 50px;
+      color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 600;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+    }
+
+    .btn-voltar:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      background: var(--accent-gold-glow);
+      transform: translateX(-4px);
+      box-shadow: 0 4px 20px rgba(240, 180, 41, 0.1);
+    }
+
+    .support-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .support-title {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.2;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .support-subtitle {
+      font-size: clamp(16px, 2.5vw, 19px);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    .support-card {
+      padding: 40px 32px;
+      border-radius: 20px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.015);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: var(--transition-smooth);
+    }
+
+    .support-card:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 4px 20px rgba(240, 180, 41, 0.05);
+    }
+
+    .support-icon-box {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--accent-gold-glow);
+      border: 1.5px solid rgba(240, 180, 41, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin-bottom: 28px;
+      transition: var(--transition-smooth);
+    }
+
+    .support-card:hover .support-icon-box {
+      transform: scale(1.1) rotate(5deg);
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 16px rgba(240, 180, 41, 0.2);
+    }
+
+    .support-card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 16px;
+    }
+
+    .support-card-text {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 24px;
+    }
+
+    .support-highlight-box {
+      width: 100%;
+      background: rgba(240, 180, 41, 0.04);
+      border: 1px solid rgba(240, 180, 41, 0.12);
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: auto;
+    }
+
+    .support-highlight-box a {
+      display: block;
+      color: var(--accent-gold);
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: underline;
+      margin-bottom: 6px;
+      transition: var(--transition-smooth);
+      word-break: break-all;
+    }
+
+    .support-highlight-box a:hover {
+      color: var(--text-white);
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    }
+
+    .support-highlight-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .support-highlight-meta strong {
+      color: var(--text-white);
+    }
+
+    /* Page-specific customized footer matching specs */
+    .support-footer {
+      background-color: hsl(215, 60%, 4%);
+      padding: 56px 0;
+      text-align: center;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .support-footer-info {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .support-footer-info strong {
+      color: var(--text-white);
+    }
+
+    .support-footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .support-footer-links a {
+      color: var(--text-muted);
+      transition: var(--transition-smooth);
+    }
+
+    .support-footer-links a:hover {
+      color: var(--accent-gold);
+    }
+
+    .support-footer-links .sep {
+      opacity: 0.3;
+    }
+
+    @media (max-width: 900px) {
+      .support-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 500px;
+        margin: 0 auto 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="support-layout">
+    <div class="container">
+      
+      <!-- Voltar ao Início -->
+      <nav class="back-nav">
+        <a href="/" class="btn-voltar" id="back-home-link">
+          <span>←</span> Voltar ao início
+        </a>
+      </nav>
+
+      <!-- Central Header -->
+      <header class="support-header">
+        <h1 class="support-title lora text-white">Suporte ao Aluno</h1>
+        <p class="support-subtitle">Estamos aqui para ajudar você em cada etapa do método.</p>
+      </header>
+
+      <!-- Support Grid -->
+      <div class="support-grid">
+        
+        <!-- CARD 1: Suporte por E-mail -->
+        <article class="support-card glass-panel" id="support-email-card">
+          <div class="support-icon-box">✉️</div>
+          <h3 class="support-card-title lora">Suporte por E-mail</h3>
+          <p class="support-card-text">
+            Para dúvidas sobre o material, acesso, reembolso ou qualquer outra questão, entre em contato pelo e-mail abaixo.
+          </p>
+          <div class="support-highlight-box">
+            <a href="mailto:eldertorrees@gmail.com" id="card-email-highlight">eldertorrees@gmail.com</a>
+            <div class="support-highlight-meta">
+              Prazo: <strong>Respondemos em até 24 horas úteis</strong> (segunda a sexta)
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 2: Solicitar Reembolso -->
+        <article class="support-card glass-panel" id="support-refund-card">
+          <div class="support-icon-box">🛡️</div>
+          <h3 class="support-card-title lora">Solicitar Reembolso</h3>
+          <p class="support-card-text">
+            Você tem 7 dias corridos após a compra para solicitar reembolso integral, sem burocracia. Basta enviar um e-mail ou solicitar diretamente na Kiwify.
+          </p>
+          <div class="support-highlight-box">
+            <a href="mailto:eldertorrees@gmail.com?subject=REEMBOLSO" id="card-refund-email">Assunto: "REEMBOLSO"</a>
+            <div class="support-highlight-meta">
+              E-mail: <strong>eldertorrees@gmail.com</strong> ou plataforma <strong>Kiwify</strong>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 3: Não recebi meu acesso -->
+        <article class="support-card glass-panel" id="support-access-card">
+          <div class="support-icon-box">🔓</div>
+          <h3 class="support-card-title lora">Não recebi meu acesso</h3>
+          <p class="support-card-text">
+            Após a confirmação, o acesso é enviado automaticamente. Verifique sua caixa de spam. Se não encontrar em 30 minutos, entre em contato conosco.
+          </p>
+          <div class="support-highlight-box">
+            <a href="mailto:eldertorrees@gmail.com?subject=ACESSO%20NÃO%20RECEBIDO" id="card-access-email">Assunto: "ACESSO NÃO RECEBIDO"</a>
+            <div class="support-highlight-meta">
+              Envio do acesso ocorre em até <strong>30 minutos</strong> pós-compra.
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ═══════════ RODAPÉ CUSTOMIZADO ═══════════ -->
+  <footer class="support-footer">
+    <div class="container">
+      <div class="support-footer-info">
+        <p><strong>Responsável:</strong> Elder Torres</p>
+        <p><strong>CNPJ/CPF:</strong> 112.024.554-09</p>
+        <p>&copy; 2026 Código do Score · Todos os direitos reservados.</p>
+      </div>
+      <div class="support-footer-links">
+        <a href="politica-de-privacidade.html" id="footer-privacy-link">Política de Privacidade</a>
+        <span class="sep">|</span>
+        <a href="termos-de-uso.html" id="footer-terms-link">Termos de Uso</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

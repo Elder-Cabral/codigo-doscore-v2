@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18188749977"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18188749977');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termos de Uso — Código do Score</title>
+  <meta name="description" content="Termos de Uso oficiais do Código do Score. Leia com atenção as diretrizes de uso, isenção de responsabilidade e propriedade intelectual.">
+
+  <!-- Google Fonts: Lora for editorial authority serif, Plus Jakarta Sans for clean high-tech fintech feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Local Stylesheets -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <style>
+    :root {
+      /* Specific branding override to match user requests exactly */
+      --bg-dark-deep: #0a0a0a;
+      --accent-gold: #f0b429;
+      --accent-gold-glow: rgba(240, 180, 41, 0.12);
+      --text-white: #ffffff;
+    }
+
+    body {
+      background-color: var(--bg-dark-deep);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .terms-layout {
+      flex: 1;
+      padding: 60px 0 100px;
+    }
+
+    .back-nav {
+      margin-bottom: 40px;
+    }
+
+    .btn-voltar {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 50px;
+      color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 600;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+    }
+
+    .btn-voltar:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      background: var(--accent-gold-glow);
+      transform: translateX(-4px);
+      box-shadow: 0 4px 20px rgba(240, 180, 41, 0.1);
+    }
+
+    .terms-card {
+      padding: 56px;
+      border-radius: 24px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.01);
+    }
+
+    .terms-header {
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 32px;
+      margin-bottom: 40px;
+    }
+
+    .terms-title {
+      font-size: clamp(28px, 4.5vw, 42px);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .terms-update {
+      font-size: 13.5px;
+      color: var(--accent-gold);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-gold-glow);
+      padding: 6px 14px;
+      border-radius: 30px;
+      border: 1px solid rgba(240, 180, 41, 0.25);
+    }
+
+    .terms-content {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .policy-group {
+      scroll-margin-top: 40px;
+    }
+
+    .policy-group h2 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .policy-group h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(240, 180, 41, 0.25), transparent);
+      margin-left: 10px;
+    }
+
+    .policy-group p {
+      font-size: 15.5px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .policy-group p strong {
+      color: var(--text-white);
+    }
+
+    .policy-group ul {
+      list-style: none;
+      padding-left: 4px;
+      margin-bottom: 16px;
+    }
+
+    .policy-group ul li {
+      position: relative;
+      font-size: 15.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      padding-left: 24px;
+      margin-bottom: 12px;
+    }
+
+    .policy-group ul li::before {
+      content: '•';
+      color: var(--accent-gold);
+      font-size: 24px;
+      position: absolute;
+      left: 4px;
+      top: -2px;
+      line-height: 1;
+    }
+
+    .policy-group ul li strong {
+      color: var(--text-white);
+    }
+
+    .policy-group a {
+      color: var(--accent-gold);
+      font-weight: 500;
+      text-decoration: underline;
+      transition: var(--transition-smooth);
+    }
+
+    .policy-group a:hover {
+      color: var(--text-white);
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Elegant disclaimer boxes */
+    .policy-box-alert {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 28px;
+      margin-top: 20px;
+    }
+
+    .policy-box-alert.warning-box {
+      background: rgba(217, 48, 37, 0.015);
+      border-color: rgba(217, 48, 37, 0.15);
+    }
+
+    .policy-box-alert p {
+      margin-bottom: 16px;
+    }
+
+    .policy-box-alert p:last-child {
+      margin-bottom: 0;
+    }
+
+    .cross-list {
+      margin-bottom: 0 !important;
+    }
+
+    .cross-list li {
+      margin-bottom: 8px !important;
+    }
+
+    .cross-list li::before {
+      content: '✕' !important;
+      color: var(--accent-red) !important;
+      font-size: 14px !important;
+      font-weight: bold;
+      left: 6px !important;
+      top: 2px !important;
+    }
+
+    .policy-box-alert a {
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .terms-layout {
+        padding: 40px 0 80px;
+      }
+      .terms-card {
+        padding: 32px 24px;
+        border-radius: 16px;
+      }
+      .btn-voltar {
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="terms-layout">
+    <div class="container">
+      
+      <!-- Voltar ao Início -->
+      <nav class="back-nav">
+        <a href="/" class="btn-voltar" id="back-home-link">
+          <span>←</span> Voltar ao início
+        </a>
+      </nav>
+
+      <!-- Terms Content Card -->
+      <article class="terms-card glass-panel">
+        
+        <!-- Header -->
+        <header class="terms-header">
+          <h1 class="terms-title lora">Termos de Uso</h1>
+          <div class="terms-update">
+            Última atualização: junho de 2026
+          </div>
+        </header>
+
+        <!-- Body Content -->
+        <div class="terms-content">
+
+          <!-- 1. ACEITAÇÃO DOS TERMOS -->
+          <section class="policy-group" id="aceitacao-termos">
+            <h2>1. ACEITAÇÃO DOS TERMOS</h2>
+            <p>Ao adquirir ou acessar o material "Código do Score", você declara ter lido, compreendido e concordado com estes Termos de Uso.</p>
+          </section>
+
+          <!-- 2. NATUREZA DO PRODUTO -->
+          <section class="policy-group" id="natureza-produto">
+            <h2>2. NATUREZA DO PRODUTO</h2>
+            <p>O Código do Score é um material exclusivamente educativo e informativo, distribuído em formato digital (PDF). Seu conteúdo aborda estratégias de organização financeira e compreensão do sistema de crédito com base em informações públicas disponíveis.</p>
+            
+            <div class="policy-box-alert warning-box">
+              <p><strong>NÃO SE TRATA DE:</strong></p>
+              <ul class="cross-list">
+                <li>Consultoria financeira personalizada</li>
+                <li>Serviço de assessoria de crédito regulamentado</li>
+                <li>Garantia de aprovação de crédito por qualquer instituição</li>
+                <li>Promessa de resultado de pontuação específico</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- 3. ISENÇÃO DE RESPONSABILIDADE POR RESULTADOS -->
+          <section class="policy-group" id="isencao-responsabilidade">
+            <h2>3. ISENÇÃO DE RESPONSABILIDADE POR RESULTADOS</h2>
+            <p>Os resultados de pontuação de crédito dependem exclusivamente da situação financeira individual de cada usuário, do histórico junto aos birôs de crédito (Serasa, SPC, Boa Vista) e das políticas internas de cada instituição financeira. O produtor não garante resultados específicos de score ou aprovação de crédito.</p>
+          </section>
+
+          <!-- 4. PROPRIEDADE INTELECTUAL -->
+          <section class="policy-group" id="propriedade-intelectual">
+            <h2>4. PROPRIEDADE INTELECTUAL</h2>
+            <p>Todo o conteúdo do material (textos, estrutura, planilhas e bônus) é de propriedade exclusiva do produtor. É expressamente proibido:</p>
+            <ul>
+              <li>Reproduzir, copiar ou redistribuir o material</li>
+              <li>Revender ou compartilhar o acesso com terceiros</li>
+              <li>Utilizar o conteúdo para fins comerciais sem autorização</li>
+            </ul>
+          </section>
+
+          <!-- 5. POLÍTICA DE REEMBOLSO -->
+          <section class="policy-group" id="politica-reembolso">
+            <h2>5. POLÍTICA DE REEMBOLSO</h2>
+            <p>O comprador tem direito a reembolso integral em até 7 (sete) dias corridos a partir da data da compra, sem necessidade de justificativa, conforme o Código de Defesa do Consumidor (Art. 49 — compras à distância). A solicitação deve ser feita diretamente na plataforma Kiwify ou pelo e-mail: <a href="mailto:eldertorrees@gmail.com" id="contact-email-refund">eldertorrees@gmail.com</a></p>
+          </section>
+
+          <!-- 6. LEGISLAÇÃO APLICÁVEL -->
+          <section class="policy-group" id="legislacao-aplicavel">
+            <h2>6. LEGISLAÇÃO APLICÁVEL</h2>
+            <p>Estes Termos são regidos pelas leis brasileiras. Fica eleito o foro da comarca de domicílio do produtor para resolução de eventuais conflitos, com renúncia a qualquer outro, por mais privilegiado que seja.</p>
+          </section>
+
+          <!-- 7. CONTATO -->
+          <section class="policy-group" id="contato">
+            <h2>7. CONTATO</h2>
+            <p>Dúvidas sobre estes termos:</p>
+            <div class="policy-box-alert">
+              <p><strong>E-mail:</strong> <a href="mailto:eldertorrees@gmail.com" id="contact-email-terms">eldertorrees@gmail.com</a></p>
+              <p><strong>Prazo de resposta:</strong> até 2 dias úteis</p>
+            </div>
+          </section>
+
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer-section">
+    <div class="container">
+      <p class="copyright-text">
+        &copy; 2026 Código do Score · Todos os direitos reservados.
+      </p>
+      <p class="disclaimer-text">
+        Este site e o material disponível são estritamente educativos e informativos. Os resultados práticos de
+        pontuação e acesso ao crédito dependem da regularidade fiscal, capacidade de pagamento e análise individualizada
+        de cada instituição financeira, não configurando promessa de crédito garantido ou resultados fixos.
+      </p>
+      <div class="footer-links">
+        <a href="politica-de-privacidade.html" id="footer-privacy-link">Política de Privacidade</a>
+        <span class="sep">·</span>
+        <a href="termos-de-uso.html" id="footer-terms-link">Termos de Uso</a>
+        <span class="sep">·</span>
+        <a href="contato.html" id="footer-support-link">Suporte ao Aluno</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
