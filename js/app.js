@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQAccordion();
   initScrollReveal();
   initStickyBar();
+  initCheckoutTracking();
 });
 
 
@@ -225,4 +226,22 @@ function showToast(message) {
     toast.style.transform = 'translateX(-50%) translateY(-10px)';
     setTimeout(() => toast.remove(), 300);
   }, 3000);
+}
+
+/**
+ * 🛒 TRACKING DE CHECKOUT (META PIXEL)
+ * Dispara o evento InitiateCheckout no Meta Pixel quando qualquer botão de checkout for clicado.
+ */
+function initCheckoutTracking() {
+  const checkoutButtons = document.querySelectorAll('a[href*="kiwify.com.br"], .checkout-btn-url, #sticky-checkout-link');
+
+  checkoutButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      if (typeof fbq === 'function') {
+        fbq('track', 'InitiateCheckout');
+      } else {
+        console.warn('Meta Pixel (fbq) não está carregado ou foi bloqueado pelo navegador.');
+      }
+    });
+  });
 }
