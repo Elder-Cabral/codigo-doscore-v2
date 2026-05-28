@@ -829,148 +829,256 @@ em {
   color: var(--accent-emerald);
 }
 
-/* 🛒 ORDER BUMP BOX DESIGN */
-.order-bump-container {
+/* 📊 SCORE SIMULATOR DESIGN */
+.simulator-card {
   max-width: 760px;
-  margin: 0 auto;
+  margin: 40px auto 0;
+  padding: 40px;
+  border-radius: 24px;
 }
 
-.order-bump-box {
+.simulator-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.simulator-header h3 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: var(--text-white);
+}
+
+.simulator-header p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.simulator-display-row {
   display: flex;
   gap: 20px;
-  padding: 32px;
-  align-items: flex-start;
-  border: 1.5px dashed var(--accent-gold);
-  background: linear-gradient(135deg, hsla(43, 93%, 53%, 0.02), hsla(43, 93%, 53%, 0.05));
-  position: relative;
-  overflow: hidden;
+  margin-bottom: 30px;
 }
 
-.order-bump-box::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background-color: var(--accent-gold);
-}
-
-/* Custom Checkbox */
-.ob-checkbox-wrapper {
-  position: relative;
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-  margin-top: 4px;
-}
-
-.ob-checkbox {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.ob-checkbox-label {
-  display: block;
-  cursor: pointer;
-}
-
-.ob-checkbox-custom {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 24px;
-  width: 24px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1.5px solid var(--accent-gold);
-  border-radius: 6px;
-  transition: var(--transition-smooth);
-}
-
-.ob-checkbox:checked ~ .ob-checkbox-label .ob-checkbox-custom {
-  background-color: var(--accent-gold);
-}
-
-.ob-checkbox-custom::after {
-  content: '';
-  position: absolute;
-  display: none;
-  left: 8px;
-  top: 4px;
-  width: 5px;
-  height: 10px;
-  border: solid var(--bg-dark-deep);
-  border-width: 0 2.5px 2.5px 0;
-  transform: rotate(45deg);
-}
-
-.ob-checkbox:checked ~ .ob-checkbox-label .ob-checkbox-custom::after {
-  display: block;
-}
-
-.ob-content {
+.score-card-display {
   flex: 1;
+  padding: 24px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.ob-eyebrow {
-  display: inline-block;
-  background: var(--accent-gold-glow);
-  color: var(--accent-gold);
-  font-size: 10px;
-  font-weight: 800;
+.actual-score-card {
+  border: 1.5px solid #f0b429;
+  background: rgba(240, 180, 41, 0.02);
+  box-shadow: 0 4px 20px rgba(240, 180, 41, 0.05);
+}
+
+.projected-score-card {
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(56, 161, 105, 0.15) 100%);
+  border: 1.5px solid rgba(56, 161, 105, 0.3);
+  box-shadow: 0 4px 20px rgba(56, 161, 105, 0.05);
+}
+
+.score-card-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
   letter-spacing: 1px;
-  padding: 2px 8px;
-  border-radius: 4px;
+  font-weight: 600;
+}
+
+.score-card-value {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.gold-text {
+  color: #f0b429;
+}
+
+.green-text {
+  color: #38a169;
+}
+
+.projected-value-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.projected-bonus-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #38a169;
+  background: rgba(10, 10, 10, 0.8);
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(56, 161, 105, 0.2);
+  white-space: nowrap;
+}
+
+/* Slider Controls */
+.slider-control-wrapper {
+  margin: 32px 0;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
   margin-bottom: 8px;
 }
 
-.ob-title {
-  font-size: 17.5px;
-  margin-bottom: 6px;
-  color: var(--accent-gold);
+.slider-hint {
+  font-weight: 400;
+  opacity: 0.8;
 }
 
-.ob-desc {
-  font-size: 13.5px;
+.score-range-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #e53e3e 0%, #f0b429 50%, #38a169 100%);
+  outline: none;
+  cursor: pointer;
+  transition: opacity .2s;
+}
+
+.score-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #f0b429;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(240, 180, 41, 0.4);
+  border: 2px solid #fff;
+  animation: pulse-slider 2s infinite alternate ease-in-out;
+}
+
+.score-range-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #f0b429;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(240, 180, 41, 0.4);
+  border: 2px solid #fff;
+  animation: pulse-slider 2s infinite alternate ease-in-out;
+}
+
+@keyframes pulse-slider {
+  0% {
+    box-shadow: 0 0 0 0 rgba(240, 180, 41, 0.7);
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgba(240, 180, 41, 0);
+    transform: scale(1.05);
+  }
+}
+
+/* Unlock grid & cards */
+.unlock-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.unlock-card {
+  position: relative;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.unlock-card.locked {
+  opacity: 0.4;
+}
+
+.unlock-lock-overlay {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 14px;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.unlock-card:not(.locked) .unlock-lock-overlay {
+  opacity: 0;
+  transform: scale(0) rotate(90deg);
+}
+
+.unlock-card:not(.locked) {
+  opacity: 1;
+  border-color: rgba(240, 180, 41, 0.3);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 4px 20px rgba(240, 180, 41, 0.08);
+}
+
+.unlock-icon {
+  font-size: 32px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.unlock-card:not(.locked):hover .unlock-icon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.unlock-content h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text-white);
+}
+
+.unlock-content p {
+  font-size: 12.5px;
   color: var(--text-muted);
   line-height: 1.6;
 }
 
-.ob-pricing {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
-  flex-shrink: 0;
+@keyframes unlock-flash {
+  0% {
+    box-shadow: 0 0 0 0 rgba(240, 180, 41, 0.8);
+    border-color: #f0b429;
+    background: rgba(240, 180, 41, 0.15);
+  }
+  100% {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 4px 20px rgba(240, 180, 41, 0.08);
+    border-color: rgba(240, 180, 41, 0.3);
+    background: rgba(255, 255, 255, 0.02);
+  }
 }
 
-.ob-old-price {
-  font-size: 12.5px;
+.unlock-card.just-unlocked {
+  animation: unlock-flash 0.8s ease-out;
+}
+
+.simulator-footer-text {
+  text-align: center;
+  font-size: 11.5px;
   color: var(--text-muted);
-  text-decoration: line-through;
-}
-
-.ob-new-price {
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--accent-gold);
-  line-height: 1;
-  margin: 2px 0 4px;
-}
-
-.ob-single-fee {
-  font-size: 10.5px;
-  color: var(--text-muted);
-}
-
-/* Active checked state class for bump */
-.order-bump-box.selected {
-  background: linear-gradient(135deg, hsla(43, 93%, 53%, 0.05), hsla(43, 93%, 53%, 0.1));
-  border-style: solid;
-  box-shadow: 0 0 20px rgba(245, 197, 24, 0.1);
+  margin-top: 28px;
+  opacity: 0.7;
 }
 
 /* 👥 SOCIAL PROOF SECTION */
@@ -1238,13 +1346,7 @@ em {
   font-weight: bold;
 }
 
-.bundle-list li.bump-bundle-item {
-  color: var(--accent-gold);
-  font-weight: 600;
-  border-top: 1px dashed rgba(245, 197, 24, 0.3);
-  padding-top: 8px;
-  margin-top: 8px;
-}
+
 
 .checkout-gateways {
   display: flex;
@@ -1515,16 +1617,16 @@ em {
     gap: 16px;
   }
   
-  .order-bump-box {
+  .simulator-display-row {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
   }
   
-  .ob-pricing {
-    align-items: center;
-    text-align: center;
-    margin-top: 16px;
+  .score-card-display {
+    padding: 16px;
+  }
+  
+  .unlock-cards-grid {
+    grid-template-columns: 1fr;
   }
   
   .guarantee-box {

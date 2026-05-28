@@ -57,7 +57,7 @@
         <!-- Trust Eyebrow Badge -->
         <div class="hero-eyebrow">
           <span class="pulse-dot-green"></span>
-          Método prático e objetivo para reorganização de crédito
+          O método que decodifica o sistema de crédito e coloca seu score em movimento — em 30 dias.
         </div>
 
         <h1 class="hero-title lora">
@@ -67,43 +67,94 @@
         </h1>
 
         <p class="hero-lead">
-          Entender como o sistema de crédito funciona é o primeiro passo para tomar decisões financeiras mais
-          inteligentes. O <strong>Código do Score</strong> foi desenvolvido para explicar, de forma simples e direta, os
-          critérios que influenciam sua pontuação — e como você pode agir sobre eles de forma organizada e consistente.
+          Pare de adivinhar o que o banco quer ver. Aprenda o que realmente move sua pontuação.
         </p>
 
-        <!-- HIGHLIGHTS GRID (REPLACES SIMULATOR) -->
-        <div class="highlights-grid">
-          <div class="highlight-item glass-panel">
-            <div class="highlight-icon-wrapper">📘</div>
-            <div class="highlight-content">
-              <h3>Material 100% digital</h3>
-              <p>Acesse imediatamente após a compra, no seu celular ou computador.</p>
+        <!-- SIMULADOR DE SCORE INTERATIVO -->
+        <div class="simulator-card glass-panel reveal">
+          <div class="simulator-header">
+            <h3 class="lora">🔓 Descubra o que seu Score pode desbloquear</h3>
+            <p>Arraste o slider e veja como sua vida muda conforme seu score cresce</p>
+          </div>
+
+          <div class="simulator-display-row">
+            <!-- Card Score Atual -->
+            <div class="score-card-display actual-score-card">
+              <span class="score-card-label">Seu Score Atual</span>
+              <span class="score-card-value gold-text" id="current-score-val">300</span>
+            </div>
+
+            <!-- Card Score Projetado -->
+            <div class="score-card-display projected-score-card">
+              <span class="score-card-label">Score com o Método</span>
+              <div class="projected-value-wrapper">
+                <span class="score-card-value green-text" id="projected-score-val">590</span>
+                <span class="projected-bonus-badge" id="projection-badge">⬆ +250 a +350 pts</span>
+              </div>
             </div>
           </div>
 
-          <div class="highlight-item glass-panel">
-            <div class="highlight-icon-wrapper">🗓️</div>
-            <div class="highlight-content">
-              <h3>Cronograma de 30 dias</h3>
-              <p>Ações organizadas semana a semana para você acompanhar seu progresso.</p>
+          <!-- Slider Control -->
+          <div class="slider-control-wrapper">
+            <div class="slider-labels">
+              <span>0</span>
+              <span class="slider-hint">Arraste para ajustar seu score atual</span>
+              <span>1000</span>
+            </div>
+            <input type="range" min="0" max="1000" value="300" class="score-range-slider" id="score-slider">
+          </div>
+
+          <!-- Seção de Desbloqueios -->
+          <div class="unlock-cards-grid" id="unlock-cards-grid">
+            <!-- Card 1 -->
+            <div class="unlock-card locked" data-min-score="400" id="unlock-card-1">
+              <div class="unlock-lock-overlay">🔒</div>
+              <div class="unlock-icon">💳</div>
+              <div class="unlock-content">
+                <h4>Cartão de Crédito</h4>
+                <p>Aprovação em bancos digitais e fintechs mesmo saindo do negativo</p>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="unlock-card locked" data-min-score="500" id="unlock-card-2">
+              <div class="unlock-lock-overlay">🔒</div>
+              <div class="unlock-icon">📱</div>
+              <div class="unlock-content">
+                <h4>Crediário e Parcelamento</h4>
+                <p>Compras parceladas em lojas físicas e e-commerces liberadas</p>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="unlock-card locked" data-min-score="600" id="unlock-card-3">
+              <div class="unlock-lock-overlay">🔒</div>
+              <div class="unlock-icon">🏦</div>
+              <div class="unlock-content">
+                <h4>Empréstimo Pessoal</h4>
+                <p>Acesso a linhas de crédito com juros mais baixos</p>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="unlock-card locked" data-min-score="700" id="unlock-card-4">
+              <div class="unlock-lock-overlay">🔒</div>
+              <div class="unlock-icon">🚗</div>
+              <div class="unlock-content">
+                <h4>Financiamento de Veículo</h4>
+                <p>Aprovação facilitada com entrada menor e melhores taxas</p>
+              </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="unlock-card locked" data-min-score="800" id="unlock-card-5">
+              <div class="unlock-lock-overlay">🔒</div>
+              <div class="unlock-icon">🏠</div>
+              <div class="unlock-content">
+                <h4>Financiamento Imobiliário</h4>
+                <p>Score ideal para aprovação de financiamento de imóvel</p>
+              </div>
             </div>
           </div>
 
-          <div class="highlight-item glass-panel">
-            <div class="highlight-icon-wrapper">🔍</div>
-            <div class="highlight-content">
-              <h3>Linguagem simples e direta</h3>
-              <p>Sem termos técnicos desnecessários. Feito para qualquer pessoa entender.</p>
-            </div>
-          </div>
-
-          <div class="highlight-item glass-panel">
-            <div class="highlight-icon-wrapper">🛡️</div>
-            <div class="highlight-content">
-              <h3>Garantia de 7 dias</h3>
-              <p>Se não gostar por qualquer motivo, devolvemos 100% do seu investimento.</p>
-            </div>
+          <div class="simulator-footer-text">
+            *Simulação ilustrativa baseada nos critérios gerais dos birôs de crédito. Resultados individuais variam.
           </div>
         </div>
 
@@ -258,8 +309,7 @@
             </p>
             <p
               style="font-size: 11px; text-align: center; color: var(--text-muted); opacity: 0.7; margin-top: 20px; line-height: 1.5; width: 100%; border-top: 1px dashed var(--border-subtle); padding-top: 16px;">
-              Este material é educativo e informativo. Não constitui consultoria financeira. Resultados de pontuação
-              variam conforme a situação individual de cada pessoa e as políticas de cada instituição financeira.
+              ⚠️ O Código do Score é um material educativo baseado em critérios reais dos birôs de crédito. Cada pessoa parte de uma situação diferente — por isso os resultados variam. O que não varia é o conhecimento: quem entende as regras do sistema age com mais inteligência e consistência.
             </p>
           </div>
         </div>
@@ -273,8 +323,7 @@
           <span class="section-tag tag-blue">Como funciona</span>
           <h2 class="section-title lora">Ação estratégica dividida<br>em uma <em>sequência correta.</em></h2>
           <p class="section-subtitle">
-            Não adianta pagar contas aleatoriamente ou seguir receitas milagrosas da internet. O método propõe uma
-            sequência lógica para gerar impactos reais na sua análise de score.
+            Passo a passo para quem quer sair do vermelho e voltar a ter crédito de verdade.
           </p>
         </div>
 
@@ -478,33 +527,7 @@
 
         </div>
 
-        <!-- INTERACTIVE ORDER BUMP BOX -->
-        <div class="order-bump-container reveal">
-          <div class="order-bump-box glass-panel" id="order-bump-card">
-            <div class="ob-checkbox-wrapper">
-              <input type="checkbox" id="ob-checkbox" class="ob-checkbox">
-              <label for="ob-checkbox" class="ob-checkbox-label">
-                <span class="ob-checkbox-custom"></span>
-              </label>
-            </div>
 
-            <div class="ob-content">
-              <span class="ob-eyebrow">🔥 ADICIONAR OFERTA ADICIONAL</span>
-              <h4 class="lora ob-title">Kit Score Blindado — Documentos Prontos para Usar</h4>
-              <p class="ob-desc">
-                Adicione modelos prontos de contestação fundamentados em leis de proteção ao consumidor, cartas para
-                exclusão de dívidas prescritas e scripts de negociação amigável por telefone. Basta preencher com seus
-                dados e enviar. Economize tempo e evite erros na hora de agir!
-              </p>
-            </div>
-
-            <div class="ob-pricing">
-              <span class="ob-old-price">R$ 47,00</span>
-              <span class="ob-new-price lora">R$ 17</span>
-              <span class="ob-single-fee">adicional único</span>
-            </div>
-          </div>
-        </div>
 
       </div>
     </section>
@@ -587,8 +610,8 @@
             <p class="t-text lora">
               "Eu tinha tentado de tudo e não entendia por que meu score não saía do lugar. Com o método, percebi que
               estava errando em pontos que nunca teria imaginado. Organizei meu cadastro, regularizei o que precisava
-              e hoje consigo acesso a crédito que antes era impossível. O score que aparece pra mim agora é
-              muito diferente do que era antes."
+              e em pouco mais de 30 dias meu score saiu de 390 para 568. Hoje consigo acesso a crédito que antes era
+              impossível."
             </p>
             <div class="t-footer">
               <div class="t-avatar" style="background-color: #B45309;">FL</div>
@@ -672,8 +695,6 @@
               <li>Bônus 3 — Roteiro Prático de Solicitação de Limites</li>
               <li>Bônus 4 — Introdução ao Uso Estratégico de Pontos</li>
               <li>Bônus 5 — Planilha de Acompanhamento Financeiro</li>
-              <li class="bump-bundle-item" id="bump-bundle-item" style="display: none;">Adicional — Kit Documentos
-                Prontos (Score Blindado)</li>
               <li>Garantia Incondicional de reembolso por 7 dias</li>
             </ul>
           </div>

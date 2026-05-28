@@ -3,7 +3,7 @@
    ══════════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initOrderBump();
+  initScoreSimulator();
   initFAQAccordion();
   initScrollReveal();
   initStickyBar();
@@ -13,83 +13,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /**
- * 🛒 LÓGICA DO ORDER BUMP DINÂMICO
- * Gerencia a soma do valor do Kit Score Blindado no preço final,
- * atualiza as copys de preço e atualiza o link de checkout Kiwify
+ * 📊 SIMULADOR DE SCORE INTERATIVO
+ * Atualiza dinamicamente a projeção de pontuação e os cards de benefícios desbloqueados.
  */
-function initOrderBump() {
-  const checkbox = document.getElementById('ob-checkbox');
-  const card = document.getElementById('order-bump-card');
-  const checkoutButtons = document.querySelectorAll('.checkout-btn-url');
-  const stickyCheckoutLink = document.getElementById('sticky-checkout-link');
-  const bumpBundleItem = document.getElementById('bump-bundle-item');
-  const priceDisplays = document.querySelectorAll('.main-price-val');
-  const checkoutPriceDisplays = document.querySelectorAll('.checkout-price-display');
+function initScoreSimulator() {
+  const slider = document.getElementById('score-slider');
+  const currentScoreVal = document.getElementById('current-score-val');
+  const projectedScoreVal = document.getElementById('projected-score-val');
+  const projectionBadge = document.getElementById('projection-badge');
+  const unlockCards = document.querySelectorAll('.unlock-card');
 
-  if (!checkbox) return;
+  if (!slider) return;
 
-  const baseCheckoutUrl = 'https://pay.kiwify.com.br/7e3LcJe';
-  // Com o order bump, redireciona adicionando a marcação de bump no checkout para acompanhamento visual
-  const bumpCheckoutUrl = 'https://pay.kiwify.com.br/7e3LcJe?offertabump=true';
-
-  checkbox.addEventListener('change', () => {
-    const isChecked = checkbox.checked;
-
-    if (isChecked) {
-      card.classList.add('selected');
-
-      // 1. Atualizar textos de preço
-      priceDisplays.forEach(el => el.innerText = '64');
-      checkoutPriceDisplays.forEach(el => el.innerText = 'R$ 64');
-
-      // 2. Mostrar item adicional no checklist final
-      if (bumpBundleItem) bumpBundleItem.style.display = 'flex';
-
-      // 3. Atualizar links de checkout
-      checkoutButtons.forEach(btn => {
-        btn.href = bumpCheckoutUrl;
-        if (btn.classList.contains('btn-large')) {
-          btn.innerHTML = '<span class="btn-shine"></span> 🔓 Quero meu acesso imediato — R$ 64';
-        }
-      });
-
-      if (stickyCheckoutLink) {
-        stickyCheckoutLink.href = bumpCheckoutUrl;
-        const stickyText = stickyCheckoutLink.querySelector('.sticky-text');
-        if (stickyText) {
-          stickyText.innerHTML = 'Quero o Código do Score — <strong>R$ 64</strong>';
-        }
-      }
-
-      // Adiciona uma discreta notificação visual
-      showToast('Kit Documentos Prontos adicionado com sucesso!');
-    } else {
-      card.classList.remove('selected');
-
-      // 1. Restaurar preços base
-      priceDisplays.forEach(el => el.innerText = '47');
-      checkoutPriceDisplays.forEach(el => el.innerText = 'R$ 47');
-
-      // 2. Ocultar item adicional no checklist final
-      if (bumpBundleItem) bumpBundleItem.style.display = 'none';
-
-      // 3. Restaurar links de checkout
-      checkoutButtons.forEach(btn => {
-        btn.href = baseCheckoutUrl;
-        if (btn.classList.contains('btn-large')) {
-          btn.innerHTML = '<span class="btn-shine"></span> 🔓 Quero meu acesso imediato — R$ 47';
-        }
-      });
-
-      if (stickyCheckoutLink) {
-        stickyCheckoutLink.href = baseCheckoutUrl;
-        const stickyText = stickyCheckoutLink.querySelector('.sticky-text');
-        if (stickyText) {
-          stickyText.innerHTML = 'Quero o Código do Score — <strong>R$ 47</strong>';
-        }
-      }
-    }
+  // Track the previous locked states
+  const wasLocked = {};
+  unlockCards.forEach(card => {
+    wasLocked[card.id] = true;
   });
+
+  const updateSimulator = () => {
+    const score = parseInt(slider.value, 10);
+
+    // Update current score display
+    currentScoreVal.innerText = score;
+
+    // Calculate projection
+    let projectedScore, badgeText;
+    if (score <= 400) {
+      projectedScore = score + 290;
+      badgeText = '⬆ +250 a +350 pts';
+    } else if (score <= 700) {
+      projectedScore = score + 210;
+      badgeText = '⬆ +180 a +240 pts';
+    } else if (score <= 900) {
+      projectedScore = score + 95;
+      badgeText = '⬆ +80 a +120 pts';
+    } else {
+      projectedScore = Math.min(1000, score + 35);
+      badgeText = '⬆ +20 a +50 pts';
+    }
+
+    projectedScoreVal.innerText = projectedScore;
+    if (projectionBadge) {
+      projectionBadge.innerText = badgeText;
+    }
+
+    // Check unlocks
+    unlockCards.forEach(card => {
+      const minScore = parseInt(card.getAttribute('data-min-score'), 10);
+      const id = card.id;
+
+      if (projectedScore >= minScore) {
+        // Should be unlocked
+        if (wasLocked[id]) {
+          // Transitioned from locked to unlocked!
+          card.classList.remove('locked');
+          // Trigger flash animation
+          card.classList.remove('just-unlocked');
+          void card.offsetWidth; // Trigger reflow to restart animation
+          card.classList.add('just-unlocked');
+          wasLocked[id] = false;
+        } else {
+          card.classList.remove('locked');
+        }
+      } else {
+        // Should be locked
+        card.classList.add('locked');
+        card.classList.remove('just-unlocked');
+        wasLocked[id] = true;
+      }
+    });
+  };
+
+  slider.addEventListener('input', updateSimulator);
+  updateSimulator();
 }
 
 /**
