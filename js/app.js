@@ -41,17 +41,17 @@ function initScoreSimulator() {
     // Calculate projection
     let projectedScore, badgeText;
     if (score <= 400) {
-      projectedScore = score + 290;
-      badgeText = '⬆ +250 a +350 pts';
+      projectedScore = score + 200;
+      badgeText = 'Simulação: Potencial Inicial';
     } else if (score <= 700) {
-      projectedScore = score + 210;
-      badgeText = '⬆ +180 a +240 pts';
+      projectedScore = score + 140;
+      badgeText = 'Simulação: Potencial Saudável';
     } else if (score <= 900) {
-      projectedScore = score + 95;
-      badgeText = '⬆ +80 a +120 pts';
+      projectedScore = score + 70;
+      badgeText = 'Simulação: Potencial Avançado';
     } else {
-      projectedScore = Math.min(1000, score + 35);
-      badgeText = '⬆ +20 a +50 pts';
+      projectedScore = Math.min(1000, score + 20);
+      badgeText = 'Simulação: Potencial Excelente';
     }
 
     projectedScoreVal.innerText = projectedScore;
