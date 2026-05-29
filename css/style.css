@@ -1052,6 +1052,11 @@ em {
   transform: scale(1.15) rotate(5deg);
 }
 
+.unlock-content {
+  flex: 1;
+  padding-right: 80px; /* Evita sobreposição com a tag de score */
+}
+
 .unlock-content h4 {
   font-size: 15px;
   font-weight: 700;
