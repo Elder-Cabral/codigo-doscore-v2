@@ -83,24 +83,40 @@
         <!-- SIMULADOR DE SCORE INTERATIVO -->
         <div class="simulator-card glass-panel reveal">
           <div class="simulator-header">
-            <h3 class="lora">📊 Simulação Didática: Faixas de Score e Linhas de Crédito</h3>
-            <p>Arraste o slider para entender as referências de crédito recomendadas no mercado para cada perfil</p>
+            <h3 class="lora">🔓 Veja o que um score alto pode desbloquear para você</h3>
+            <p>Arraste o slider e descubra quais portas se abrem conforme sua pontuação cresce</p>
           </div>
 
+          <!-- Score Display Row -->
           <div class="simulator-display-row">
-            <!-- Card Score Atual -->
             <div class="score-card-display actual-score-card">
-              <span class="score-card-label">Seu Score Atual</span>
+              <span class="score-card-label">Seu score hoje</span>
               <span class="score-card-value gold-text" id="current-score-val">300</span>
             </div>
 
-            <!-- Card Score Projetado -->
+            <div class="sim-arrow-indicator">→</div>
+
             <div class="score-card-display projected-score-card">
-              <span class="score-card-label">Potencial com Boas Práticas</span>
+              <span class="score-card-label">Potencial com o método</span>
               <div class="projected-value-wrapper">
                 <span class="score-card-value green-text" id="projected-score-val">590</span>
                 <span class="projected-bonus-badge" id="projection-badge">⬆ Simulação Ilustrativa</span>
               </div>
+            </div>
+          </div>
+
+          <!-- Score Range Bar visual -->
+          <div class="score-range-visual">
+            <div class="score-range-track">
+              <div class="score-range-fill" id="score-range-fill"></div>
+              <div class="score-thumb-indicator" id="score-thumb-indicator"></div>
+            </div>
+            <div class="score-range-zones">
+              <span class="zone zone-red">Baixo</span>
+              <span class="zone zone-orange">Regular</span>
+              <span class="zone zone-yellow">Bom</span>
+              <span class="zone zone-green">Ótimo</span>
+              <span class="zone zone-blue">Excelente</span>
             </div>
           </div>
 
@@ -114,57 +130,64 @@
             <input type="range" min="0" max="1000" value="300" class="score-range-slider" id="score-slider">
           </div>
 
-          <!-- Seção de Desbloqueios -->
+          <!-- Score status label -->
+          <div class="score-status-label" id="score-status-label">
+            <span class="status-dot" id="status-dot"></span>
+            <span id="score-status-text">Score Baixo — acesso a crédito muito limitado</span>
+          </div>
+
+          <!-- Unlock Cards Grid -->
           <div class="unlock-cards-grid" id="unlock-cards-grid">
-            <!-- Card 1 -->
             <div class="unlock-card locked" data-min-score="400" id="unlock-card-1">
               <div class="unlock-lock-overlay">Score 400+</div>
               <div class="unlock-icon">💳</div>
               <div class="unlock-content">
                 <h4>Cartão de Crédito</h4>
-                <p>Perfis nesta faixa costumam ter acesso inicial a cartões em bancos digitais</p>
+                <p>Aprovação inicial em bancos digitais e fintechs para quem está reconstruindo o histórico</p>
               </div>
             </div>
-            <!-- Card 2 -->
             <div class="unlock-card locked" data-min-score="500" id="unlock-card-2">
               <div class="unlock-lock-overlay">Score 500+</div>
               <div class="unlock-icon">📱</div>
               <div class="unlock-content">
                 <h4>Crediário e Parcelamento</h4>
-                <p>Melhoria na aceitação de cadastros para parcelamento simples no crediário</p>
+                <p>Compras parceladas em lojas físicas e e-commerces ficam mais acessíveis nesta faixa</p>
               </div>
             </div>
-            <!-- Card 3 -->
             <div class="unlock-card locked" data-min-score="600" id="unlock-card-3">
               <div class="unlock-lock-overlay">Score 600+</div>
               <div class="unlock-icon">🏦</div>
               <div class="unlock-content">
                 <h4>Empréstimo Pessoal</h4>
-                <p>Acesso a linhas de empréstimo pessoal sob análise individual de taxas</p>
+                <p>Acesso a linhas de crédito pessoal com taxas mais competitivas do mercado</p>
               </div>
             </div>
-            <!-- Card 4 -->
             <div class="unlock-card locked" data-min-score="700" id="unlock-card-4">
               <div class="unlock-lock-overlay">Score 700+</div>
               <div class="unlock-icon">🚗</div>
               <div class="unlock-content">
                 <h4>Financiamento de Veículo</h4>
-                <p>Referência comum para solicitações de financiamento sob análise bancária</p>
+                <p>Aprovação facilitada com entrada menor e condições melhores de parcelamento</p>
               </div>
             </div>
-            <!-- Card 5 -->
             <div class="unlock-card locked" data-min-score="800" id="unlock-card-5">
               <div class="unlock-lock-overlay">Score 800+</div>
               <div class="unlock-icon">🏠</div>
               <div class="unlock-content">
                 <h4>Financiamento Imobiliário</h4>
-                <p>Faixa de excelência muito valorizada em análises de financiamento imobiliário</p>
+                <p>Faixa de excelência para aprovação de financiamento de imóvel nas melhores condições</p>
               </div>
             </div>
           </div>
 
+          <!-- CTA contextual dentro do simulador -->
+          <div class="sim-cta-inline" id="sim-cta-inline" style="display:none;">
+            <p id="sim-cta-text">Você está a <strong id="sim-points-away">100</strong> pontos de desbloquear o próximo benefício.</p>
+            <a href="https://pay.kiwify.com.br/7e3LcJe" class="sim-cta-btn checkout-btn-url">Ver como chegar lá por R$ 47 →</a>
+          </div>
+
           <div class="simulator-footer-text">
-            *Simulação ilustrativa baseada nos critérios gerais dos birôs de crédito. Resultados individuais variam.
+            *Simulação ilustrativa baseada nos critérios gerais dos birôs de crédito. Resultados individuais variam conforme histórico e análise de cada instituição.
           </div>
         </div>
 
@@ -847,7 +870,7 @@
         <a href="contato.html">Suporte ao Aluno</a>
       </div>
       <p style="font-size: 11px; color: var(--text-muted); opacity: 0.6; margin-top: 16px; line-height: 1.5;">
-        Responsável: Elder Torres · codigoscore.info@codigodoscore.com.br · CPF: 112.024.554-09
+        Responsável: Elder Torres · codigoscore.info@codigodoscore.com.br
       </p>
     </div>
   </footer>

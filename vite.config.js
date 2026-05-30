@@ -9,6 +9,7 @@ export default defineConfig({
         privacidade: resolve(__dirname, 'politica-de-privacidade.html'),
         termos: resolve(__dirname, 'termos-de-uso.html'),
         contato: resolve(__dirname, 'contato.html'),
+        obrigado: resolve(__dirname, 'obrigado.html'),
       },
     },
   },

@@ -23,67 +23,103 @@ function initScoreSimulator() {
   const projectedScoreVal = document.getElementById('projected-score-val');
   const projectionBadge = document.getElementById('projection-badge');
   const unlockCards = document.querySelectorAll('.unlock-card');
+  const scoreStatusText = document.getElementById('score-status-text');
+  const statusDot = document.getElementById('status-dot');
+  const rangeFill = document.getElementById('score-range-fill');
+  const thumbIndicator = document.getElementById('score-thumb-indicator');
+  const simCtaInline = document.getElementById('sim-cta-inline');
+  const simCtaText = document.getElementById('sim-cta-text');
+  const simPointsAway = document.getElementById('sim-points-away');
 
   if (!slider) return;
 
-  // Track the previous locked states
   const wasLocked = {};
-  unlockCards.forEach(card => {
-    wasLocked[card.id] = true;
-  });
+  unlockCards.forEach(card => { wasLocked[card.id] = true; });
+
+  // Faixas de score e seus status
+  const getScoreStatus = (score) => {
+    if (score < 300)  return { label: 'Score Muito Baixo — acesso a crédito extremamente limitado', color: '#e53e3e', dotColor: '#e53e3e' };
+    if (score < 500)  return { label: 'Score Baixo — aprovações difíceis, juros altos', color: '#dd6b20', dotColor: '#ed8936' };
+    if (score < 600)  return { label: 'Score Regular — algumas opções disponíveis', color: '#d69e2e', dotColor: '#ecc94b' };
+    if (score < 700)  return { label: 'Score Bom — acesso crescente a crédito', color: '#38a169', dotColor: '#48bb78' };
+    if (score < 800)  return { label: 'Score Ótimo — boas condições de crédito', color: '#2b6cb0', dotColor: '#4299e1' };
+    return { label: 'Score Excelente — melhores taxas e limites do mercado', color: '#553c9a', dotColor: '#805ad5' };
+  };
 
   const updateSimulator = () => {
     const score = parseInt(slider.value, 10);
-
-    // Update current score display
     currentScoreVal.innerText = score;
 
-    // Calculate projection
+    // Projeção
     let projectedScore, badgeText;
     if (score <= 400) {
-      projectedScore = score + 200;
-      badgeText = 'Simulação: Potencial Inicial';
-    } else if (score <= 700) {
-      projectedScore = score + 140;
-      badgeText = 'Simulação: Potencial Saudável';
-    } else if (score <= 900) {
-      projectedScore = score + 70;
-      badgeText = 'Simulação: Potencial Avançado';
+      projectedScore = score + 220;
+      badgeText = '⬆ +200 a +250 pts estimados';
+    } else if (score <= 600) {
+      projectedScore = score + 160;
+      badgeText = '⬆ +140 a +180 pts estimados';
+    } else if (score <= 800) {
+      projectedScore = score + 90;
+      badgeText = '⬆ +70 a +100 pts estimados';
     } else {
-      projectedScore = Math.min(1000, score + 20);
-      badgeText = 'Simulação: Potencial Excelente';
+      projectedScore = Math.min(1000, score + 30);
+      badgeText = '⬆ Refinamento de score';
     }
+    projectedScore = Math.min(1000, projectedScore);
 
     projectedScoreVal.innerText = projectedScore;
-    if (projectionBadge) {
-      projectionBadge.innerText = badgeText;
+    if (projectionBadge) projectionBadge.innerText = badgeText;
+
+    // Status label
+    const status = getScoreStatus(score);
+    if (scoreStatusText) scoreStatusText.innerText = status.label;
+    if (statusDot) {
+      statusDot.style.background = status.dotColor;
+      statusDot.style.boxShadow = `0 0 6px ${status.dotColor}`;
     }
 
-    // Check unlocks
+    // Range fill visual (percentual de 0 a 1000)
+    const pct = (score / 1000) * 100;
+    if (rangeFill) rangeFill.style.width = pct + '%';
+    if (thumbIndicator) thumbIndicator.style.left = pct + '%';
+
+    // Unlock cards — baseado no score PROJETADO
+    let nextLockScore = null;
     unlockCards.forEach(card => {
       const minScore = parseInt(card.getAttribute('data-min-score'), 10);
       const id = card.id;
 
       if (projectedScore >= minScore) {
-        // Should be unlocked
         if (wasLocked[id]) {
-          // Transitioned from locked to unlocked!
           card.classList.remove('locked');
-          // Trigger flash animation
           card.classList.remove('just-unlocked');
-          void card.offsetWidth; // Trigger reflow to restart animation
+          void card.offsetWidth;
           card.classList.add('just-unlocked');
           wasLocked[id] = false;
         } else {
           card.classList.remove('locked');
         }
       } else {
-        // Should be locked
         card.classList.add('locked');
         card.classList.remove('just-unlocked');
         wasLocked[id] = true;
+        // Pega o próximo a desbloquear
+        if (!nextLockScore || minScore < nextLockScore) {
+          nextLockScore = minScore;
+        }
       }
     });
+
+    // CTA contextual
+    if (simCtaInline) {
+      if (nextLockScore !== null && projectedScore < 1000) {
+        const diff = nextLockScore - projectedScore;
+        simCtaInline.style.display = 'block';
+        if (simPointsAway) simPointsAway.innerText = diff;
+      } else {
+        simCtaInline.style.display = 'none';
+      }
+    }
   };
 
   slider.addEventListener('input', updateSimulator);

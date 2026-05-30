@@ -1651,3 +1651,128 @@ em {
     padding: 32px 16px;
   }
 }
+
+/* ── SIMULADOR MELHORADO ── */
+:root {
+  --accent-green: var(--accent-emerald);
+}
+
+.sim-arrow-indicator {
+  font-size: 24px;
+  color: var(--accent-green);
+  align-self: center;
+  padding: 0 8px;
+  opacity: 0.7;
+}
+
+/* Barra de zona de score */
+.score-range-visual {
+  margin: 12px 0 4px;
+}
+.score-range-track {
+  position: relative;
+  height: 10px;
+  border-radius: 8px;
+  background: linear-gradient(to right,
+    #e53e3e 0%, #e53e3e 20%,
+    #ed8936 20%, #ed8936 40%,
+    #ecc94b 40%, #ecc94b 55%,
+    #48bb78 55%, #48bb78 75%,
+    #4299e1 75%, #4299e1 88%,
+    #805ad5 88%, #805ad5 100%
+  );
+  margin-bottom: 6px;
+}
+.score-range-fill {
+  /* decorativo — não usado com fundo gradiente */
+  display: none;
+}
+.score-thumb-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--accent-green);
+  box-shadow: 0 0 8px rgba(0,255,136,0.5);
+  transition: left 0.15s ease;
+  pointer-events: none;
+}
+.score-range-zones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+.zone {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  opacity: 0.7;
+}
+.zone-red    { color: #e53e3e; }
+.zone-orange { color: #ed8936; }
+.zone-yellow { color: #d69e2e; }
+.zone-green  { color: #38a169; }
+.zone-blue   { color: #4299e1; }
+
+/* Label de status do score */
+.score-status-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  min-height: 20px;
+  transition: color 0.3s;
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* CTA contextual dentro do simulador */
+.sim-cta-inline {
+  margin-top: 20px;
+  background: rgba(0, 255, 136, 0.06);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 12px;
+  padding: 14px 18px;
+  text-align: center;
+  animation: fadeInUp 0.3s ease;
+}
+.sim-cta-inline p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.sim-cta-inline p strong {
+  color: var(--accent-green);
+}
+.sim-cta-btn {
+  display: inline-block;
+  background: var(--accent-green);
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: 50px;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: opacity 0.2s;
+}
+.sim-cta-btn:hover {
+  opacity: 0.88;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

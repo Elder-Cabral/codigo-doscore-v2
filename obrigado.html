@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '4190377481253394');
+  fbq('track', 'PageView');
+  fbq('track', 'Purchase', {
+    value: 47.00,
+    currency: 'BRL'
+  });
+  </script>
+  <!-- End Meta Pixel -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Obrigado pela compra — Código do Score</title>
+
+  <!-- Google Fonts: Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ══════════════════════════════════════════════════════════════
+       DESIGN SYSTEM - HUD CYBER FINTECH STYLE
+       ══════════════════════════════════════════════════════════════ */
+    :root {
+      --color-primary: #00FF88;
+      --color-primary-rgb: 0, 255, 136;
+      --color-secondary: #00B85C;
+      --bg-dark1: #0D1A10;
+      --bg-dark2: #111D13;
+      --text-main: #ffffff;
+      --text-sec: #9ab0a0;
+      --border-hud: rgba(0, 255, 136, 0.15);
+      --font-family: 'Space Grotesk', sans-serif;
+      --max-width: 960px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark1);
+      /* Subtle green grid lines */
+      background-image: 
+        linear-gradient(rgba(0, 255, 136, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.02) 1px, transparent 1px);
+      background-size: 36px 36px;
+      color: var(--text-main);
+      font-family: var(--font-family);
+      line-height: 1.6;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* 🛡️ HUD Card (cantos decorativos em CSS) */
+    .hud-card {
+      position: relative;
+      background: var(--bg-dark2);
+      border: 1px solid var(--border-hud);
+      border-radius: 4px;
+      padding: 32px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Top-left HUD corner */
+    .hud-card::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 12px;
+      height: 12px;
+      border-top: 2px solid var(--color-primary);
+      border-left: 2px solid var(--color-primary);
+      pointer-events: none;
+    }
+
+    /* Bottom-right HUD corner */
+    .hud-card::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      right: -1px;
+      width: 12px;
+      height: 12px;
+      border-bottom: 2px solid var(--color-primary);
+      border-right: 2px solid var(--color-primary);
+      pointer-events: none;
+    }
+
+    /* Pulse Glow Animation */
+    @keyframes pulse-glow {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 16px rgba(0, 255, 136, 0.25);
+        border-color: var(--color-primary);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 32px rgba(0, 255, 136, 0.55);
+        border-color: #ffffff;
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 16px rgba(0, 255, 136, 0.25);
+        border-color: var(--color-primary);
+      }
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTION 1: HERO SECTION
+       ══════════════════════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+
+    /* Ambient central green glow */
+    .hero-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 255, 136, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(0, 255, 136, 0.1);
+      border: 1px solid var(--color-primary);
+      color: var(--color-primary);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 6px 16px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-icon {
+      font-size: 40px;
+      width: 80px;
+      height: 80px;
+      background: rgba(0, 255, 136, 0.05);
+      border: 1.5px solid var(--color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      animation: pulse-glow 2.5s infinite ease-in-out;
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-sec);
+      max-width: 640px;
+      margin: 0 auto 36px;
+    }
+
+    /* Email highlight box */
+    .email-box {
+      display: inline-block;
+      border: 1px solid var(--color-primary);
+      background: rgba(0, 255, 136, 0.03);
+      padding: 16px 32px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #ffffff;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+      margin-bottom: 18px;
+    }
+
+    .hero-contingency {
+      font-size: 12.5px;
+      color: var(--text-sec);
+    }
+
+    .hero-contingency a {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTION 2: PRÓXIMOS PASSOS
+       ══════════════════════════════════════════════════════════════ */
+    .steps {
+      padding: 40px 0 60px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 32px;
+      text-align: center;
+      letter-spacing: -0.5px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .step-card {
+      padding: 28px;
+    }
+
+    .step-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .step-card p {
+      font-size: 13.5px;
+      color: var(--text-sec);
+      line-height: 1.5;
+    }
+
+    .step-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .step-icon {
+      font-size: 32px;
+    }
+
+    .step-number {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-primary);
+      letter-spacing: 1px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTION 3: RESUMO DE ENTREGÁVEIS
+       ══════════════════════════════════════════════════════════════ */
+    .deliverables {
+      background: var(--bg-dark2);
+      border-top: 1px solid rgba(0, 255, 136, 0.05);
+      border-bottom: 1px solid rgba(0, 255, 136, 0.05);
+      padding: 60px 0;
+    }
+
+    .deliverables-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+    }
+
+    .deliverables-header-text {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+
+    /* Modules checklist style */
+    .modules-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .module-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+    }
+
+    .module-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 26px;
+      height: 14px;
+      width: 1px;
+      background: var(--color-secondary);
+      opacity: 0.4;
+    }
+
+    .module-icon-lock {
+      font-size: 14px;
+      color: var(--color-primary);
+      width: 22px;
+      height: 22px;
+      background: rgba(0, 255, 136, 0.08);
+      border: 1px solid var(--color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      z-index: 2;
+    }
+
+    .module-info {
+      font-size: 14.5px;
+      font-weight: 500;
+    }
+
+    /* Bonus column style */
+    .bonus-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .bonus-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 4px;
+    }
+
+    .bonus-item-title {
+      font-size: 13.5px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bonus-badge {
+      background: rgba(0, 255, 136, 0.1);
+      border: 1px solid var(--color-primary);
+      color: var(--color-primary);
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 2px;
+      text-transform: uppercase;
+    }
+
+    .bonus-price {
+      font-size: 12px;
+      color: var(--text-sec);
+    }
+
+    .value-box {
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      text-align: center;
+    }
+
+    .value-box p {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-sec);
+    }
+
+    .value-box strong {
+      color: var(--color-primary);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTION 4: TIMELINE (EXPECTATIVA)
+       ══════════════════════════════════════════════════════════════ */
+    .timeline-section {
+      padding: 60px 0;
+    }
+
+    .timeline-container {
+      position: relative;
+      margin-top: 48px;
+      margin-bottom: 48px;
+    }
+
+    /* Horizontal line in desktop */
+    .timeline-line {
+      position: absolute;
+      top: 14px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-primary) 0%, rgba(0, 255, 136, 0.1) 100%);
+      z-index: 1;
+    }
+
+    .timeline-steps-wrapper {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .timeline-node {
+      text-align: center;
+    }
+
+    .timeline-dot {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--bg-dark1);
+      border: 2px solid var(--color-primary);
+      box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .timeline-node-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .timeline-node-desc {
+      font-size: 12.5px;
+      color: var(--text-sec);
+      padding: 0 10px;
+      line-height: 1.4;
+    }
+
+    .timeline-disclaimer {
+      font-size: 11px;
+      color: var(--text-sec);
+      opacity: 0.6;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTION 5: GARANTIA
+       ══════════════════════════════════════════════════════════════ */
+    .guarantee {
+      padding: 40px 0 60px;
+    }
+
+    .guarantee-box {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      border: 1px solid var(--color-primary) !important;
+    }
+
+    .guarantee-icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+
+    .guarantee-box h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .guarantee-box p {
+      font-size: 13.5px;
+      color: var(--text-sec);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .support-contact {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 16px;
+      font-size: 13px;
+      color: var(--text-sec);
+    }
+
+    .support-contact a {
+      color: var(--color-primary);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTION 6: RODAPÉ
+       ══════════════════════════════════════════════════════════════ */
+    .footer {
+      background-color: #080f0a;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      padding: 48px 0;
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--text-sec);
+      margin-top: auto;
+    }
+
+    .footer p {
+      margin-bottom: 8px;
+    }
+
+    .footer a {
+      color: var(--text-sec);
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+
+    .footer a:hover {
+      color: var(--color-primary);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       📱 RESPONSIVIDADE (MOBILE-FIRST)
+       ══════════════════════════════════════════════════════════════ */
+    @media (max-width: 860px) {
+      .deliverables-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        background-size: 24px 24px;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      /* Vertical timeline layout for mobile */
+      .timeline-line {
+        top: 0;
+        left: 14px;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(180deg, var(--color-primary) 0%, rgba(0, 255, 136, 0.1) 100%);
+      }
+
+      .timeline-steps-wrapper {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: left;
+        padding-left: 10px;
+      }
+
+      .timeline-node {
+        display: flex;
+        gap: 16px;
+        text-align: left;
+      }
+
+      .timeline-dot {
+        margin: 0;
+        flex-shrink: 0;
+        z-index: 2;
+      }
+
+      .timeline-node-content {
+        padding-top: 2px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Noscript tag must be at the top of the body for standard HTML5 validation -->
+  <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=4190377481253394&ev=Purchase&noscript=1"/>
+  </noscript>
+
+  <main>
+    <!-- ═══════════ 1. HERO SECTION ═══════════ -->
+    <section class="hero">
+      <div class="hero-glow"></div>
+      <div class="container hero-inner">
+        
+        <!-- Open Lock Icon -->
+        <div class="hero-icon">🔓</div>
+        
+        <span class="hero-badge">Compra Confirmada</span>
+        
+        <h1 class="hero-title">Seu acesso ao Código do Score está a caminho.</h1>
+        
+        <p class="hero-subtitle">
+          Verifique sua caixa de entrada — o e-mail com o link de acesso chega em até 5 minutos. Confira também a pasta de spam ou promoções.
+        </p>
+        
+        <!-- Highlight Email Box -->
+        <div class="email-box">
+          📧 Enviado para o e-mail usado na compra
+        </div>
+        
+        <p class="hero-contingency">
+          Se não receber em 10 minutos, acesse sua conta Kiwify em <a href="https://app.kiwify.com.br" target="_blank">app.kiwify.com</a> com o mesmo e-mail usado na compra.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ═══════════ 2. PRÓXIMOS PASSOS ═══════════ -->
+    <section class="steps">
+      <div class="container">
+        
+        <h2 class="section-title">O que fazer agora?</h2>
+        
+        <div class="steps-grid">
+          
+          <!-- Card 1 -->
+          <div class="hud-card step-card">
+            <div class="step-header">
+              <span class="step-icon">📧</span>
+              <span class="step-number">01</span>
+            </div>
+            <h3>Acesse seu e-mail</h3>
+            <p>Procure por um e-mail da Kiwify com o assunto "Seu acesso ao Código do Score". Clique no botão de acesso contido no corpo da mensagem.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="hud-card step-card">
+            <div class="step-header">
+              <span class="step-icon">📖</span>
+              <span class="step-number">02</span>
+            </div>
+            <h3>Comece pelo Módulo 1</h3>
+            <p>Os Pilares Reais do Score. Faça a leitura na ordem indicada — cada módulo prepara o terreno e os conceitos para o próximo.</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="hud-card step-card">
+            <div class="step-header">
+              <span class="step-icon">📅</span>
+              <span class="step-number">03</span>
+            </div>
+            <h3>Inicie o Cronograma</h3>
+            <p>No Módulo 3 você encontra o plano de 30 dias. Comece hoje mesmo. A consistência é o fator mais valorizado pelos birôs de crédito.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════ 3. RESUMO DO QUE VOCÊ RECEBEU ═══════════ -->
+    <section class="deliverables">
+      <div class="container">
+        
+        <div class="deliverables-layout">
+          
+          <!-- Modules column -->
+          <div>
+            <h3 class="deliverables-header-text">Aqui está tudo que você desbloqueou:</h3>
+            
+            <div class="modules-list">
+              <!-- Item 1 -->
+              <div class="module-item">
+                <div class="module-icon-lock">🔓</div>
+                <div class="module-info">Módulo 1 — Os Pilares Reais do Score</div>
+              </div>
+              <!-- Item 2 -->
+              <div class="module-item">
+                <div class="module-icon-lock">🔓</div>
+                <div class="module-info">Módulo 2 — O Diagnóstico do Relatório</div>
+              </div>
+              <!-- Item 3 -->
+              <div class="module-item">
+                <div class="module-icon-lock">🔓</div>
+                <div class="module-info">Módulo 3 — Cronograma Prático de 30 Dias</div>
+              </div>
+              <!-- Item 4 -->
+              <div class="module-item">
+                <div class="module-icon-lock">🔓</div>
+                <div class="module-info">Módulo 4 — Guia de Negociação com Desconto</div>
+              </div>
+              <!-- Item 5 -->
+              <div class="module-item">
+                <div class="module-icon-lock">🔓</div>
+                <div class="module-info">Módulo 5 — Mantendo o Score Alto Sempre</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bonus column -->
+          <div class="bonus-column">
+            <div class="bonus-grid">
+              
+              <!-- Bonus 1 -->
+              <div class="bonus-item">
+                <span class="bonus-item-title">⚖️ Direitos do Consumidor <span class="bonus-badge">Grátis</span></span>
+                <span class="bonus-price">val. R$ 19</span>
+              </div>
+              
+              <!-- Bonus 2 -->
+              <div class="bonus-item">
+                <span class="bonus-item-title">💳 10 Cartões Acessíveis 2026 <span class="bonus-badge">Grátis</span></span>
+                <span class="bonus-price">val. R$ 17</span>
+              </div>
+              
+              <!-- Bonus 3 -->
+              <div class="bonus-item">
+                <span class="bonus-item-title">📈 Solicitação de Limites <span class="bonus-badge">Grátis</span></span>
+                <span class="bonus-price">val. R$ 27</span>
+              </div>
+              
+              <!-- Bonus 4 -->
+              <div class="bonus-item">
+                <span class="bonus-item-title">📊 Controle Financeiro <span class="bonus-badge">Grátis</span></span>
+                <span class="bonus-price">val. R$ 47</span>
+              </div>
+              
+              <!-- Bonus 5 -->
+              <div class="bonus-item">
+                <span class="bonus-item-title">🧾 Renegociação de Dívidas <span class="bonus-badge">Grátis</span></span>
+                <span class="bonus-price">val. R$ 47</span>
+              </div>
+
+            </div>
+
+            <!-- Value Recap -->
+            <div class="value-box">
+              <p>R$ 204 em conteúdo — você pagou apenas <strong>R$ 47</strong></p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════ 4. TIMELINE DE EXPECTATIVA ═══════════ -->
+    <section class="timeline-section">
+      <div class="container">
+        
+        <h2 class="section-title">O que esperar nos próximos 30 dias?</h2>
+        
+        <div class="timeline-container">
+          <!-- Guide line -->
+          <div class="timeline-line"></div>
+          
+          <div class="timeline-steps-wrapper">
+            
+            <!-- Step 1 -->
+            <div class="timeline-node">
+              <div class="timeline-dot">1</div>
+              <div class="timeline-node-content">
+                <h4 class="timeline-node-title">Semana 1</h4>
+                <p class="timeline-node-desc">Diagnóstico completo e entendimento real dos fatores de análise.</p>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="timeline-node">
+              <div class="timeline-dot">2</div>
+              <div class="timeline-node-content">
+                <h4 class="timeline-node-title">Semana 2</h4>
+                <p class="timeline-node-desc">Ações práticas nos bancos de dados, cadastros e atualizações.</p>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="timeline-node">
+              <div class="timeline-dot">3</div>
+              <div class="timeline-node-content">
+                <h4 class="timeline-node-title">Semana 3</h4>
+                <p class="timeline-node-desc">Hábitos financeiros estratégicos que o algoritmo lê positivamente.</p>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="timeline-node">
+              <div class="timeline-dot">4</div>
+              <div class="timeline-node-content">
+                <h4 class="timeline-node-title">Semana 4</h4>
+                <p class="timeline-node-desc">Consolidação e estratégias de manutenção do perfil de crédito.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <p class="timeline-disclaimer">
+          Os resultados variam conforme a situação financeira de cada pessoa. O Código do Score é um material educativo baseado nos critérios reais dos birôs de crédito. O conhecimento é o mesmo para todos — a aplicação determina o resultado individual.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ═══════════ 5. GARANTIA ═══════════ -->
+    <section class="guarantee">
+      <div class="container">
+        
+        <div class="hud-card guarantee-box">
+          <div class="guarantee-icon">🛡️</div>
+          <h2>Garantia Legal de 7 dias</h2>
+          <p>
+            Se por qualquer motivo você não ficar satisfeito nos primeiros 7 dias, basta solicitar o reembolso integral. Sem perguntas, sem burocracia. É seu direito assegurado pelo Código de Defesa do Consumidor (CDC).
+          </p>
+          <div class="support-contact">
+            E-mail de suporte oficial: <a href="mailto:codigoscore.info@codigodoscore.com.br">codigoscore.info@codigodoscore.com.br</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════ 6. RODAPÉ ═══════════ -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Código do Score · Material educativo digital.</p>
+      <p>Responsável: Elder Torres · <a href="mailto:codigoscore.info@codigodoscore.com.br">codigoscore.info@codigodoscore.com.br</a></p>
+      <p>Ao adquirir este produto, você concorda com os <a href="termos-de-uso.html">Termos de Uso</a> e a <a href="politica-de-privacidade.html">Política de Privacidade</a>.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
