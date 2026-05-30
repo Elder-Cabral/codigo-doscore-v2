@@ -105,29 +105,23 @@
             </div>
           </div>
 
-          <!-- Score Range Bar visual -->
-          <div class="score-range-visual">
-            <div class="score-range-track">
-              <div class="score-range-fill" id="score-range-fill"></div>
-              <div class="score-thumb-indicator" id="score-thumb-indicator"></div>
-            </div>
+          <!-- Slider Control -->
+          <div class="slider-control-wrapper">
+            <input type="range" min="0" max="1000" value="300" class="score-range-slider" id="score-slider">
+            
             <div class="score-range-zones">
               <span class="zone zone-red">Baixo</span>
               <span class="zone zone-orange">Regular</span>
               <span class="zone zone-yellow">Bom</span>
-              <span class="zone zone-green">Ótimo</span>
-              <span class="zone zone-blue">Excelente</span>
+              <span class="zone zone-green-light">Muito Bom</span>
+              <span class="zone zone-green">Excelente</span>
             </div>
-          </div>
 
-          <!-- Slider Control -->
-          <div class="slider-control-wrapper">
             <div class="slider-labels">
               <span>0</span>
               <span class="slider-hint">Arraste para ajustar seu score atual</span>
               <span>1000</span>
             </div>
-            <input type="range" min="0" max="1000" value="300" class="score-range-slider" id="score-slider">
           </div>
 
           <!-- Score status label -->
@@ -178,12 +172,6 @@
                 <p>Faixa de excelência para aprovação de financiamento de imóvel nas melhores condições</p>
               </div>
             </div>
-          </div>
-
-          <!-- CTA contextual dentro do simulador -->
-          <div class="sim-cta-inline" id="sim-cta-inline" style="display:none;">
-            <p id="sim-cta-text">Você está a <strong id="sim-points-away">100</strong> pontos de desbloquear o próximo benefício.</p>
-            <a href="https://pay.kiwify.com.br/7e3LcJe" class="sim-cta-btn checkout-btn-url">Ver como chegar lá por R$ 47 →</a>
           </div>
 
           <div class="simulator-footer-text">
