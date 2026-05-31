@@ -407,6 +407,7 @@ em {
   cursor: pointer;
   overflow: hidden;
   border: none;
+  animation: btn-glow-pulse 2s infinite ease-in-out;
 }
 
 .btn-shine {
@@ -425,9 +426,22 @@ em {
   100% { left: 150%; }
 }
 
+@keyframes btn-glow-pulse {
+  0% {
+    box-shadow: 0 10px 25px 0 rgba(24, 165, 88, 0.4);
+  }
+  50% {
+    box-shadow: 0 10px 35px 10px rgba(24, 165, 88, 0.65);
+  }
+  100% {
+    box-shadow: 0 10px 25px 0 rgba(24, 165, 88, 0.4);
+  }
+}
+
 .btn-principal:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 40px 0 rgba(24, 165, 88, 0.45);
+  box-shadow: 0 15px 40px 0 rgba(24, 165, 88, 0.6) !important;
+  animation: none;
 }
 
 .btn-principal:active {
@@ -1649,6 +1663,13 @@ em {
   
   .cta-card {
     padding: 32px 16px;
+  }
+
+  .btn-principal {
+    font-size: 16px;
+    padding: 16px 28px;
+    width: 100%;
+    max-width: 420px;
   }
 }
 
