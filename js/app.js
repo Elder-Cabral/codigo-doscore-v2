@@ -118,49 +118,17 @@ function initScrollReveal() {
 }
 
 /**
- * 📱 MOBILE BOTTOM STICKY CTA INTELIGENTE
- * Exibe um botão CTA fixado na base da tela apenas em dispositivos móveis.
- * O botão desaparece suavemente quando botões de checkout nativos da página entram em cena.
+ * 🏷️ PERSISTENT MOBILE & DESKTOP STICKY CTA
+ * Exibe uma barra de compra fixa (no topo em desktop, no rodapé em mobile)
+ * de forma persistente ao rolar a página para cima ou para baixo além de 300px.
  */
 function initMobileStickyCTA() {
   const stickyBar = document.getElementById('mobile-sticky-bar');
   if (!stickyBar) return;
 
-  const mainCTAs = document.querySelectorAll('.hero-cta-container, .final-cta-section');
-  const isMobile = () => window.innerWidth <= 768;
-
-  let heroCtaInView = false;
-  let finalCtaInView = false;
-
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.target.classList.contains('hero-cta-container')) {
-          heroCtaInView = entry.isIntersecting;
-        }
-        if (entry.target.classList.contains('final-cta-section')) {
-          finalCtaInView = entry.isIntersecting;
-        }
-      });
-      toggleStickyBar();
-    }, {
-      root: null,
-      threshold: 0.05
-    });
-
-    mainCTAs.forEach(cta => observer.observe(cta));
-  }
-
   function toggleStickyBar() {
-    if (!isMobile()) {
-      stickyBar.classList.remove('visible');
-      return;
-    }
-
-    const anyCtaVisible = heroCtaInView || finalCtaInView;
-
-    // Aparece ao rolar mais de 400px E quando nenhum CTA estático estiver na tela
-    if (window.scrollY > 400 && !anyCtaVisible) {
+    // Exibe a barra persistente após rolar 300px
+    if (window.scrollY > 300) {
       stickyBar.classList.add('visible');
     } else {
       stickyBar.classList.remove('visible');
