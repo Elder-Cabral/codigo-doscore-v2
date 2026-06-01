@@ -1,129 +1,59 @@
 /* ══════════════════════════════════════════════════════════════
-   LÓGICA INTERATIVA — CÓDIGO DO SCORE (PREMIUM SCRIPTS)
+   LÓGICA DE CONVERSÃO & CRO — CÓDIGO DO SCORE (PREMIUM SCRIPTS)
    ══════════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initScoreSimulator();
+  initCountdownTimer();
   initFAQAccordion();
   initScrollReveal();
-  initStickyBar();
+  initMobileStickyCTA();
   initCheckoutTracking();
 });
 
-
-
-
 /**
- * 📊 SIMULADOR DE SCORE INTERATIVO
- * Atualiza dinamicamente a projeção de pontuação e os cards de benefícios desbloqueados.
+ * ⏱️ COUNTDOWN TIMER DE 24 HORAS PERSISTENTE
+ * Usa localStorage para manter o cronômetro individual ativo ao atualizar a página.
  */
-function initScoreSimulator() {
-  const slider = document.getElementById('score-slider');
-  const currentScoreVal = document.getElementById('current-score-val');
-  const projectedScoreVal = document.getElementById('projected-score-val');
-  const projectionBadge = document.getElementById('projection-badge');
-  const unlockCards = document.querySelectorAll('.unlock-card');
-  const scoreStatusText = document.getElementById('score-status-text');
-  const statusDot = document.getElementById('status-dot');
-  const rangeFill = document.getElementById('score-range-fill');
-  const thumbIndicator = document.getElementById('score-thumb-indicator');
-  const simCtaInline = document.getElementById('sim-cta-inline');
-  const simCtaText = document.getElementById('sim-cta-text');
-  const simPointsAway = document.getElementById('sim-points-away');
+function initCountdownTimer() {
+  const hoursEl = document.getElementById('hours');
+  const minutesEl = document.getElementById('minutes');
+  const secondsEl = document.getElementById('seconds');
+  
+  if (!hoursEl || !minutesEl || !secondsEl) return;
 
-  if (!slider) return;
+  const storageKey = 'score_countdown_target';
+  let targetTime = localStorage.getItem(storageKey);
 
-  const wasLocked = {};
-  unlockCards.forEach(card => { wasLocked[card.id] = true; });
+  // Se não houver data salva ou já tiver expirado, cria novo ciclo de 24h
+  if (!targetTime || Date.now() > parseInt(targetTime, 10)) {
+    targetTime = Date.now() + 24 * 60 * 60 * 1000;
+    localStorage.setItem(storageKey, targetTime.toString());
+  } else {
+    targetTime = parseInt(targetTime, 10);
+  }
 
-  // Faixas de score e seus status
-  const getScoreStatus = (score) => {
-    if (score < 300)  return { label: 'Score Muito Baixo — acesso a crédito extremamente limitado', color: '#e53e3e', dotColor: '#e53e3e' };
-    if (score < 500)  return { label: 'Score Baixo — aprovações difíceis, juros altos', color: '#dd6b20', dotColor: '#ed8936' };
-    if (score < 600)  return { label: 'Score Regular — algumas opções disponíveis', color: '#d69e2e', dotColor: '#ecc94b' };
-    if (score < 700)  return { label: 'Score Bom — acesso crescente a crédito', color: '#38a169', dotColor: '#48bb78' };
-    if (score < 800)  return { label: 'Score Ótimo — boas condições de crédito', color: '#2b6cb0', dotColor: '#4299e1' };
-    return { label: 'Score Excelente — melhores taxas e limites do mercado', color: '#553c9a', dotColor: '#805ad5' };
-  };
+  function updateTimer() {
+    const now = Date.now();
+    let diff = targetTime - now;
 
-  const updateSimulator = () => {
-    const score = parseInt(slider.value, 10);
-    currentScoreVal.innerText = score;
-
-    // Projeção
-    let projectedScore, badgeText;
-    if (score <= 400) {
-      projectedScore = score + 220;
-      badgeText = '⬆ +200 a +250 pts estimados';
-    } else if (score <= 600) {
-      projectedScore = score + 160;
-      badgeText = '⬆ +140 a +180 pts estimados';
-    } else if (score <= 800) {
-      projectedScore = score + 90;
-      badgeText = '⬆ +70 a +100 pts estimados';
-    } else {
-      projectedScore = Math.min(1000, score + 30);
-      badgeText = '⬆ Refinamento de score';
-    }
-    projectedScore = Math.min(1000, projectedScore);
-
-    projectedScoreVal.innerText = projectedScore;
-    if (projectionBadge) projectionBadge.innerText = badgeText;
-
-    // Status label
-    const status = getScoreStatus(score);
-    if (scoreStatusText) scoreStatusText.innerText = status.label;
-    if (statusDot) {
-      statusDot.style.background = status.dotColor;
-      statusDot.style.boxShadow = `0 0 6px ${status.dotColor}`;
+    // Reinicia o ciclo de 24h ao expirar (urgência contínua/perpétua)
+    if (diff <= 0) {
+      targetTime = Date.now() + 24 * 60 * 60 * 1000;
+      localStorage.setItem(storageKey, targetTime.toString());
+      diff = 24 * 60 * 60 * 1000;
     }
 
-    // Range fill visual (percentual de 0 a 1000)
-    const pct = (score / 1000) * 100;
-    if (rangeFill) rangeFill.style.width = pct + '%';
-    if (thumbIndicator) thumbIndicator.style.left = pct + '%';
+    const hrs = Math.floor(diff / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
 
-    // Unlock cards — baseado no score PROJETADO
-    let nextLockScore = null;
-    unlockCards.forEach(card => {
-      const minScore = parseInt(card.getAttribute('data-min-score'), 10);
-      const id = card.id;
+    hoursEl.innerText = hrs.toString().padStart(2, '0');
+    minutesEl.innerText = mins.toString().padStart(2, '0');
+    secondsEl.innerText = secs.toString().padStart(2, '0');
+  }
 
-      if (projectedScore >= minScore) {
-        if (wasLocked[id]) {
-          card.classList.remove('locked');
-          card.classList.remove('just-unlocked');
-          void card.offsetWidth;
-          card.classList.add('just-unlocked');
-          wasLocked[id] = false;
-        } else {
-          card.classList.remove('locked');
-        }
-      } else {
-        card.classList.add('locked');
-        card.classList.remove('just-unlocked');
-        wasLocked[id] = true;
-        // Pega o próximo a desbloquear
-        if (!nextLockScore || minScore < nextLockScore) {
-          nextLockScore = minScore;
-        }
-      }
-    });
-
-    // CTA contextual
-    if (simCtaInline) {
-      if (nextLockScore !== null && projectedScore < 1000) {
-        const diff = nextLockScore - projectedScore;
-        simCtaInline.style.display = 'block';
-        if (simPointsAway) simPointsAway.innerText = diff;
-      } else {
-        simCtaInline.style.display = 'none';
-      }
-    }
-  };
-
-  slider.addEventListener('input', updateSimulator);
-  updateSimulator();
+  updateTimer();
+  setInterval(updateTimer, 1000);
 }
 
 /**
@@ -154,7 +84,6 @@ function initFAQAccordion() {
         panel.style.maxHeight = null;
       } else {
         wrapper.classList.add('active');
-        // Define o maxHeight com base na altura real interna
         panel.style.maxHeight = panel.scrollHeight + 'px';
       }
     });
@@ -173,95 +102,74 @@ function initScrollReveal() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('revealed');
-          observer.unobserve(entry.target); // Roda apenas uma vez por elemento
+          observer.unobserve(entry.target);
         }
       });
     }, {
       root: null,
-      threshold: 0.08,
-      rootMargin: '0px 0px -40px 0px' // Aciona pouco antes de entrar completamente
+      threshold: 0.05,
+      rootMargin: '0px 0px -20px 0px'
     });
 
     revealElements.forEach(el => observer.observe(el));
   } else {
-    // Fallback caso navegador não suporte IntersectionObserver
     revealElements.forEach(el => el.classList.add('revealed'));
   }
 }
 
 /**
- * 🏷️ STICKY PURCHASE BAR
- * Exibe a barra de checkout no rodapé da página após passar
- * do bloco principal de introdução e benefícios (500px de scroll).
+ * 📱 MOBILE BOTTOM STICKY CTA INTELIGENTE
+ * Exibe um botão CTA fixado na base da tela apenas em dispositivos móveis.
+ * O botão desaparece suavemente quando botões de checkout nativos da página entram em cena.
  */
-function initStickyBar() {
-  const stickyBar = document.getElementById('sticky-bar');
+function initMobileStickyCTA() {
+  const stickyBar = document.getElementById('mobile-sticky-bar');
   if (!stickyBar) return;
 
-  let ticking = false;
+  const mainCTAs = document.querySelectorAll('.hero-cta-container, .final-cta-section');
+  const isMobile = () => window.innerWidth <= 768;
 
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        if (window.scrollY > 600) {
-          stickyBar.classList.add('visible');
-        } else {
-          stickyBar.classList.remove('visible');
+  let heroCtaInView = false;
+  let finalCtaInView = false;
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.target.classList.contains('hero-cta-container')) {
+          heroCtaInView = entry.isIntersecting;
         }
-        ticking = false;
+        if (entry.target.classList.contains('final-cta-section')) {
+          finalCtaInView = entry.isIntersecting;
+        }
       });
-      ticking = true;
+      toggleStickyBar();
+    }, {
+      root: null,
+      threshold: 0.05
+    });
+
+    mainCTAs.forEach(cta => observer.observe(cta));
+  }
+
+  function toggleStickyBar() {
+    if (!isMobile()) {
+      stickyBar.classList.remove('visible');
+      return;
     }
-  }, { passive: true });
-}
 
-/**
- * UTILITY: Custom premium Toast alerts
- */
-function showToast(message) {
-  // Remove existing toast if present
-  const existingToast = document.querySelector('.premium-toast');
-  if (existingToast) existingToast.remove();
+    const anyCtaVisible = heroCtaInView || finalCtaInView;
 
-  const toast = document.createElement('div');
-  toast.className = 'premium-toast';
-  toast.innerText = message;
+    // Aparece ao rolar mais de 400px E quando nenhum CTA estático estiver na tela
+    if (window.scrollY > 400 && !anyCtaVisible) {
+      stickyBar.classList.add('visible');
+    } else {
+      stickyBar.classList.remove('visible');
+    }
+  }
 
-  // Custom temporary styling directly in JS to avoid CSS clutter
-  Object.assign(toast.style, {
-    position: 'fixed',
-    bottom: '90px',
-    left: '50%',
-    transform: 'translateX(-50%) translateY(20px)',
-    background: 'rgba(11, 30, 51, 0.95)',
-    border: '1px solid hsl(43, 93%, 53%)',
-    color: '#FFF',
-    padding: '12px 24px',
-    borderRadius: '30px',
-    boxShadow: '0 8px 30px rgba(245, 197, 24, 0.2)',
-    zIndex: '999',
-    fontSize: '13px',
-    fontWeight: '600',
-    letterSpacing: '0.3px',
-    opacity: '0',
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-    pointerEvents: 'none'
-  });
-
-  document.body.appendChild(toast);
-
-  // Animate in
-  setTimeout(() => {
-    toast.style.opacity = '1';
-    toast.style.transform = 'translateX(-50%) translateY(0)';
-  }, 50);
-
-  // Animate out and remove
-  setTimeout(() => {
-    toast.style.opacity = '0';
-    toast.style.transform = 'translateX(-50%) translateY(-10px)';
-    setTimeout(() => toast.remove(), 300);
-  }, 3000);
+  window.addEventListener('scroll', toggleStickyBar, { passive: true });
+  window.addEventListener('resize', toggleStickyBar, { passive: true });
+  toggleStickyBar();
 }
 
 /**
@@ -269,7 +177,7 @@ function showToast(message) {
  * Dispara o evento InitiateCheckout no Meta Pixel quando qualquer botão de checkout for clicado.
  */
 function initCheckoutTracking() {
-  const checkoutButtons = document.querySelectorAll('a[href*="kiwify.com.br"], .checkout-btn-url, #sticky-checkout-link');
+  const checkoutButtons = document.querySelectorAll('a[href*="kiwify.com.br"], .checkout-btn-url, #mobile-sticky-btn');
 
   checkoutButtons.forEach(button => {
     button.addEventListener('click', () => {
