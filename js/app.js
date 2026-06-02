@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initMobileStickyCTA();
   initCheckoutTracking();
+  initUrgencyCounter();
 });
 
 /**
@@ -157,3 +158,60 @@ function initCheckoutTracking() {
     });
   });
 }
+
+/**
+ * ⚡ CONTADOR DINÂMICO DE PESSOAS NA PÁGINA (Urgência Realista)
+ * Varia de 2 a 4 para cada usuário (salvo no localStorage)
+ * Não muda ao atualizar a página, mas sofre flutuações sutis ao longo do tempo.
+ */
+function initUrgencyCounter() {
+  const counters = document.querySelectorAll('.urgency-tag');
+  if (counters.length === 0) return;
+
+  const storageKeyVal = 'page_view_counter_val';
+  const storageKeyTime = 'page_view_counter_time';
+  
+  let currentVal = localStorage.getItem(storageKeyVal);
+  let lastTime = localStorage.getItem(storageKeyTime);
+  const now = Date.now();
+
+  // Se não houver valor salvo ou se o último foi salvo há mais de 3 minutos, gera um novo
+  if (!currentVal || !lastTime || (now - parseInt(lastTime, 10) > 3 * 60 * 1000)) {
+    // Escolhe aleatoriamente entre 2, 3 ou 4 pessoas para manter natural e com prova social positiva
+    const possibleValues = [2, 3, 4];
+    currentVal = possibleValues[Math.floor(Math.random() * possibleValues.length)];
+    localStorage.setItem(storageKeyVal, currentVal.toString());
+    localStorage.setItem(storageKeyTime, now.toString());
+  } else {
+    currentVal = parseInt(currentVal, 10);
+  }
+
+  // Função para formatar o texto do contador
+  function formatUrgencyText(val) {
+    return `⚡ ${val} pessoas estão na página agora`;
+  }
+
+  // Atualiza todos os elementos na página
+  counters.forEach(el => {
+    el.innerHTML = formatUrgencyText(currentVal);
+  });
+
+  // Flutua o número a cada 30 segundos
+  setInterval(() => {
+    let val = parseInt(localStorage.getItem(storageKeyVal) || '3', 10);
+    const change = Math.random() > 0.5 ? 1 : -1;
+    let newVal = val + change;
+    
+    // Mantém no intervalo de 2 a 4
+    if (newVal < 2) newVal = 2;
+    if (newVal > 4) newVal = 4;
+
+    localStorage.setItem(storageKeyVal, newVal.toString());
+    localStorage.setItem(storageKeyTime, Date.now().toString());
+
+    counters.forEach(el => {
+      el.innerHTML = formatUrgencyText(newVal);
+    });
+  }, 30000);
+}
+
