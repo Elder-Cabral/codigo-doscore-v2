@@ -12,8 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * ⏱️ COUNTDOWN TIMER DE 24 HORAS PERSISTENTE
- * Usa localStorage para manter o cronômetro individual ativo ao atualizar a página.
+ * ⏱️ COUNTDOWN TIMER DE URGÊNCIA COM HORÁRIOS QUEBRADOS E PERSISTENTES
+ * Escolhe um horário inicial aleatório (16h, 18h, 19h, 21h ou 22h com minutos/segundos quebrados)
+ * e o mantém em localStorage para que persista ao recarregar a página.
  */
 function initCountdownTimer() {
   const hoursEl = document.getElementById('hours');
@@ -25,9 +26,19 @@ function initCountdownTimer() {
   const storageKey = 'score_countdown_target';
   let targetTime = localStorage.getItem(storageKey);
 
-  // Se não houver data salva ou já tiver expirado, cria novo ciclo de 24h
+  // Função auxiliar para gerar uma duração aleatória em milissegundos
+  function getRandomDuration() {
+    const hoursOptions = [16, 18, 19, 21, 22];
+    const randomHour = hoursOptions[Math.floor(Math.random() * hoursOptions.length)];
+    const randomMinute = Math.floor(Math.random() * 50) + 5; // minutos entre 5 e 54
+    const randomSecond = Math.floor(Math.random() * 50) + 5; // segundos entre 5 e 54
+    return ((randomHour * 60 + randomMinute) * 60 + randomSecond) * 1000;
+  }
+
+  // Se não houver data salva ou já tiver expirado, cria novo ciclo com horário quebrado
   if (!targetTime || Date.now() > parseInt(targetTime, 10)) {
-    targetTime = Date.now() + 24 * 60 * 60 * 1000;
+    const duration = getRandomDuration();
+    targetTime = Date.now() + duration;
     localStorage.setItem(storageKey, targetTime.toString());
   } else {
     targetTime = parseInt(targetTime, 10);
@@ -37,11 +48,12 @@ function initCountdownTimer() {
     const now = Date.now();
     let diff = targetTime - now;
 
-    // Reinicia o ciclo de 24h ao expirar (urgência contínua/perpétua)
+    // Reinicia o ciclo com outro horário quebrado ao expirar
     if (diff <= 0) {
-      targetTime = Date.now() + 24 * 60 * 60 * 1000;
+      const duration = getRandomDuration();
+      targetTime = Date.now() + duration;
       localStorage.setItem(storageKey, targetTime.toString());
-      diff = 24 * 60 * 60 * 1000;
+      diff = duration;
     }
 
     const hrs = Math.floor(diff / (1000 * 60 * 60));
